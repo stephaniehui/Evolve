@@ -1,0 +1,490 @@
+/* Do we even need this liquid importing stuff? Not sure. It's part of the NationBuilder framework. The Evolve theme
+is totally custom and should be fully defined by the not-commented-out-stuff, but I haven't experimented with turning
+the @import stuff off and am not totally sure what's needed or
+what will work in a different environment. */
+
+/* turning off liquid business
+@import "liquid_variables";
+$fonts: museo-1, museo-2, Lucida Grande, Lucida Sans Unicode, Garuda, sans-serif;
+$form_field_font: museo-1, museo-2, Lucida Sans Unicode, Lucida Grande, Garuda, sans-serif;
+
+
+@import "liquid_all";
+@import "liquid_basic_framework";
+
+// headlines
+@import "framework_headlines";
+
+// mega drop-down nav
+@import "framework_nav";
+
+// header
+@import "framework_header";
+
+// two columns
+@import "framework_2columns";
+
+/* Theme specific SCSS exists in the file imported below.
+Click the Default button above the template editor to see
+what the file contains if you wish to override any of it. */
+/*
+@import "basic";
+/* Add SCSS you wish to override or add below. */
+
+
+/*************** COLORS ***********************/
+
+$theme_color_1: #606060; // basic grey
+$theme_color_2: #CDCCCA; // light grey
+
+
+$grey_text: #606060;
+$dark_grey_text: #202020;
+$border_color: #B8B8B8;
+$red_color: #972730;
+$red_color_light: #AA5058;
+$green_color: #80cc28;
+$link_color:  #009999;
+
+$green_button: #337435;
+$red_button: #972730;
+
+
+/**************** MIX INs ***********************/
+
+@mixin tab_border($n)	{
+  -webkit-border-top-left-radius: $n;
+  -webkit-border-top-right-radius: $n;
+  -moz-border-radius-topleft: $n;
+  -moz-border-radius-topright: $n;
+  border-top-left-radius: $n;
+  border-top-right-radius: $n;
+}
+
+@mixin box_shadow($n)	{
+  -moz-box-shadow: $n $n $n #ccc;
+  -webkit-box-shadow: $n $n $n #ccc;
+  box-shadow: $n $n $n #ccc;
+}
+
+@mixin header_gradient()	{
+  background-image: linear-gradient(bottom, rgb(255,255,255) 49%, rgb(236,236,236) 91%);
+  background-image: -o-linear-gradient(bottom, rgb(255,255,255) 49%, rgb(236,236,236) 91%);
+  background-image: -moz-linear-gradient(bottom, rgb(255,255,255) 49%, rgb(236,236,236) 91%);
+  background-image: -webkit-linear-gradient(bottom, rgb(255,255,255) 49%, rgb(236,236,236) 91%);
+  background-image: -ms-linear-gradient(bottom, rgb(255,255,255) 49%, rgb(236,236,236) 91%);
+  background-image: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      color-stop(0.49, rgb(255,255,255)),
+      color-stop(0.91, rgb(236,236,236)));
+}
+
+@mixin footer_gradient()	{
+  background-image: linear-gradient(bottom, rgb(236,236,236) 37%, rgb(255,255,255) 70%);
+  background-image: -o-linear-gradient(bottom, rgb(236,236,236) 37%, rgb(255,255,255) 70%);
+  background-image: -moz-linear-gradient(bottom, rgb(236,236,236) 37%, rgb(255,255,255) 70%);
+  background-image: -webkit-linear-gradient(bottom, rgb(236,236,236) 37%, rgb(255,255,255) 70%);
+  background-image: -ms-linear-gradient(bottom, rgb(236,236,236) 37%, rgb(255,255,255) 70%);
+  background-image: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      color-stop(0.37, rgb(236,236,236)),
+      color-stop(0.70, rgb(255,255,255)));
+}
+
+
+/***************** LAYOUT **********************/
+
+#body {
+  color: $theme_color_1;
+  line-height: 1.8em;
+  strong 		{color: $dark_grey_text;}
+  h2		{color: $dark_grey_text; padding-bottom: 10px;}
+  h3		{color: $dark_grey_text;}
+
+}
+
+.wrapper	{
+  width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.left_column	{
+  width: 555px;
+  float: left;
+  padding-right: 20px;
+}
+
+.right_column	{
+  margin: 0px 1px 10px 600px;
+  padding: 0px 0px 5px 17px;
+}
+
+
+/****************** CLASSES **********************/
+
+.red	{ color: $red_color !important; }
+
+.green	{ color: $green_color !important; }
+
+/*need to find where this is used and remove it. */
+h2.green_header	{
+  color: $green_color !important;
+}
+
+.no_clear	{
+  clear: none;
+}
+
+.corner_round	{
+  @include border-radius(8px);
+}
+
+.side_margin	{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.neg_top_margin	{
+  margin-top: -10px;
+}
+
+.marginbottom	{
+  margin-bottom: 15px;
+}
+
+
+a:link		{ color: $link_color;}
+a:visited 	{ color: $link_color;}
+a:focus 	{ color: $link_color;}
+a:hover 	{ color: $link_color;}
+a:active 	{ color: $link_color;}
+
+a.plain:link 	{ color: white; text-decoration: none; }
+a.plain:visited { color: white; text-decoration: none; }
+a.plain:focus 	{ color: white; text-decoration: none; }
+a.plain:hover 	{ color: white; text-decoration: none; }
+a.plain:active 	{ color: white; text-decoration: none; }
+
+a.staff_links:link	{ text-decoration: none;}
+a.staff_links:visited	{ text-decoration: none;}
+a.staff_links:focus	{ text-decoration: none;}
+a.staff_links:hover	{ text-decoration: underline;}
+a.staff_links:active	{ text-decoration: underline;}
+
+a.hover-underline-white:link 	{ color: white; text-decoration: none; }
+a.hover-underline-white:visited { color: white; text-decoration: none; }
+a.hover-underline-white:focus	{ color: white; text-decoration: none; }
+a.hover-underline-white:hover	{ color: white; text-decoration: underline; }
+a.hover-underline-white:active 	{ color: white; text-decoration: underline; }
+
+a.hover-underline-grey:link	 { color: $theme_color_1; text-decoration: none; }
+a.hover-underline-grey:visited	 { color: $theme_color_1; text-decoration: none; }
+a.hover-underline-grey:focus	 { color: $theme_color_1; text-decoration: none; }
+a.hover-underline-grey:hover	 { color: $theme_color_1; text-decoration: underline; }
+a.hover-underline-grey:active	 { color: $theme_color_1; text-decoration: underline; }
+
+a.hover-underline-dark-grey:link	 { color: $dark_grey_text; text-decoration: none; }
+a.hover-underline-dark-grey:visited	 { color: $dark_grey_text; text-decoration: none; }
+a.hover-underline-dark-grey:focus	 { color: $dark_grey_text; text-decoration: none; }
+a.hover-underline-dark-grey:hover	 { color: $dark_grey_text; text-decoration: underline; }
+a.hover-underline-dark-grey:active	 { color: $dark_grey_text; text-decoration: underline; }
+
+a.underline-grey:link	 { color: $theme_color_1; text-decoration: underline; }
+a.underline-grey:visited	 { color: $theme_color_1; text-decoration: underline; }
+a.underline-grey:focus	 { color: $theme_color_1; text-decoration: underline; }
+a.underline-grey:hover	 { color: $theme_color_1; text-decoration: underline; }
+a.underline-grey:active	 { color: $theme_color_1; text-decoration: underline; }
+
+
+/*some buttons are having their text changed to the link color. this is a manual ovverride */
+a.button:link		{ color: white; text-decoration: none;}
+a.button:visited	{ color: white; text-decoration: none;}
+a.button:focus		{ color: white; text-decoration: none;}
+a.button:hover		{ color: white; text-decoration: none;}
+a.button:active		{ color: white; text-decoration: none;}
+
+
+/*********************************** BUTTONS *************************************/
+
+
+.submit-button, .submit_link a {
+  @include fancy-button-colors($green_button, darken($green_button, 5), darken($green_button, 10));
+}
+
+.fp_button_green	{
+  color: white;
+  display: inline-block;
+  height: 53px;
+  width: 180px;
+  text-align: center;
+  font-size: 1.4em;
+  span { display: inline-block; padding-top: 15px; }
+  @include border-radius(5px);
+  @include fancy-button-colors($green_button, darken($green_button, 5), darken($green_button, 10));
+}
+
+.fp_button_red	{
+  display: inline-block;
+  height: 53px;
+  width: 180px;
+  text-align: center;
+  font-size: 1.4em;
+  span { display: inline-block; padding-top: 17px; }
+  @include border-radius(5px);
+  @include fancy-button-colors($red_button, darken($red_button, 5), darken($red_button, 10));
+}
+
+.sidebar_button_green	{
+  margin: 20px 0px 5px 0px;
+  display: inline-block;
+  height: 53px;
+  width: 180px;
+  text-align: center;
+  font-size: 1.4em;
+  span	{ display: inline-block; padding-top: 17px; }
+  @include border-radius(5px);
+  @include fancy-button-colors($green_button, darken($green_button, 5), darken($green_button, 10));
+}
+
+.sidebar_button_red {
+  margin: 20px 0px 5px 0px;
+  display: inline-block;
+  height: 53px;
+  width: 180px;
+  text-align: center;
+  font-size: 1.4em;
+  span	{ display: inline-block; padding-top: 17px; }
+  @include border-radius(5px);
+  @include fancy-button-colors($red_button, darken($red_button, 5), darken($red_button, 10));
+}
+
+span.button_2_row	{
+  padding-top: 4px;
+
+}
+
+
+.inline_button	{
+  display: inline-block;
+  margin: 0px 10px 15px 0px;
+}
+/******************* HEADER *******************/
+
+#header	{
+  margin: -20px -10px 0px -10px;
+  border-bottom-color: #B8B8B8;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  @include header_gradient();
+}
+
+#header_social	{
+  width: 105px;
+  float: right;
+  margin-top: 26px;
+}
+
+#header_tabs	{
+  padding: 5px 0px 0px 504px;
+}
+
+.tab	{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: inline;
+  padding-right: 14px;
+  padding-left: 14px;
+  background-color: $red_color;
+  @include tab_border(5px);
+}
+
+
+#about_tab	{
+  margin-right: 3px;
+}
+
+#campaign_tab	{
+  margin-right: 3px;
+  margin-left: 3px;
+}
+
+#email_tab	{
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+#donate_tab {
+  margin-left:3px;
+}
+
+/***************** FOOTER *********************/
+
+#footer {
+  margin-top: 0px; //overides the theme default of 25px top margin
+  padding: 73px 30px 10px 30px;
+  color: $theme_color_1; //overides the theme default of $theme_color_3
+  font-size: 0.85em;
+  @include footer_gradient();
+}
+
+#footer_text	{
+  text-align: center;
+}
+
+
+/********************** FRONT PAGE ***********************/
+
+/*.slides_container	img {
+  @include border-radius(8px);
+  margin: 0px 0px 0px 0px;
+}*/
+
+.slides_container {
+  height: 358px;
+  overflow: hidden; }
+
+.features_pagination	{
+  visibility: hidden;
+}
+
+img[alt="Save Our Schools"]	{
+  margin-bottom: 10px !important;
+}
+
+div#fp_content	{
+  p 	{font-size: 1.2em;}
+}
+
+h1#fp_headline	{
+  font-size: 3.25em;
+  padding-bottom: 10px;
+}
+
+
+/********************** CAMPAIGNS **********************/
+
+
+#campaigns	{
+  margin: 0px -10px 0px -10px;
+  border-bottom-color: $border_color;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-top-color: $border_color;
+  border-top-width: 1px;
+  border-top-style: solid;
+  background-color: #f1faea;
+  clear: both;
+}
+
+.column	{
+  width: 180px;
+  display: inline-block;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.column_title	{
+  font-size: 1.2em;
+  font-color: $dark_grey_text !important;
+  line-height: 115%;
+  margin: 0px 0px 15px 0px;
+  display: block;
+}
+
+.column_text	{
+  font-size: .8em;
+
+}
+
+#column1	{
+  margin-left: 0px;
+}
+
+#column1,#column2,#column3	{
+  margin-right: 70px;
+
+}
+
+/*********************** FORMS *************************/
+
+input.text,	.textarea {
+  border-width: 1px;
+  border-color: white !important;
+  @include header_gradient();
+  @include border-radius(5px);
+}
+
+.form	{
+  color: $theme_color_1;
+}
+
+.left_column_form	{
+  width: 450px;
+  padding-right: 15px;
+  vertical-align: top;
+}
+
+.right_column_form	{
+  vertical-align: top;
+}
+
+td p	{
+  font-size: 1em;
+}
+
+
+/********************* ABOUT US ************************/
+
+div.staff_list	{
+  line-height: 1.6em;
+  font-size: 2.5em;
+}
+
+#staff_bio_div	{
+  border-top: 1px solid $theme_color_1;
+  padding-top: 25px;
+}
+
+div.bio	{
+  border-bottom: 1px solid $theme_color_1;
+  margin-top: 25px;
+}
+
+div#Erica	{
+  border-bottom: none;
+}
+
+.staff_img	{
+  float: right;
+  margin-left: 15px;
+  margin-bottom: 50px;
+  @include border-radius(8px);
+}
+
+
+/*********************** MISC ***************************/
+
+/*used on the thank-you page*/
+.center	{
+  text-align: center;
+
+  /* make calendar links red */
+  #body h4 a { color: $red_color;}
+  #body h4 a:hover {text-decoration: underline;}
+
+}
+
+hr {
+  clear: none;
+}
+
+ol {
+  li { padding-bottom: 10px; }
+}

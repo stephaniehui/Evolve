@@ -1,0 +1,35 @@
+-#  This file is app/views/movies/index.html.haml
+%title Evolve
+  
+  // TODO: div id = "header" tags
+
+  #header_tabs
+    #about_tab.tab 
+      %a(:title => "About Us", :href => "TODO:about_us") about us  
+    #blog_tab.tab
+      %a(:title => "Blog", :href => "TODO:blog") blog
+    #campaign_tab.tab
+      %a(:title => "Take Action", :href => "TODO:alerts") take action
+    #email_rab.tab
+      %a(:title => "Email Signup", :href => "TODO:sign_up") email signup
+    #donate_tab.tab
+      %a(:title => "Donate", :href => "TODO:donate_link") donate
+
+  
+
+/ %table#movies
+/   %thead
+/     %tr
+/       %th{:class => @title_header}= link_to 'Movie Title', movies_path(:sort => 'title', :ratings => @selected_ratings), :id => 'title_header'
+/       %th Rating
+/       %th{:class => @date_header}= link_to 'Release Date', movies_path(:sort => 'release_date', :ratings => @selected_ratings), :id => 'release_date_header'
+/       %th More Info
+/   %tbody
+/     - @movies.each do |movie|
+/       %tr
+/         %td= movie.title 
+/         %td= movie.rating
+/         %td= movie.release_date
+/         %td= link_to "More about #{movie.title}", movie_path(movie)
+
+/ = link_to 'Add new movie', new_movie_path

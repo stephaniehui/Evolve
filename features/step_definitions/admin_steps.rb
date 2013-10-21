@@ -1,10 +1,8 @@
-# Add a declarative step here for populating the DB with movies.
-
-Given /the following movies exist/ do |movies_table|
-  movies_table.hashes.each do |movie|
+Given /the following pages exist/ do |pages_table|
+  pages_table.hashes.each do |page|
     # each returned element will be a hash whose key is the table header.
     # you should arrange to add that movie to the database here.
-    Movie.create!(movie)
+    Page.create!(page)
   end
   #flunk "Unimplemented"
 end
@@ -19,15 +17,12 @@ Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   #flunk "Unimplemented"
 end
 
-# Make it easier to express checking or unchecking several boxes at once
-#  "When I uncheck the following ratings: PG, G, R"
-#  "When I check the following ratings: G"
+When /I log in as administrator/ do 
+  redirect_to(admin_page_path)
+end
 
-When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
-  # HINT: use String#split to split up the rating_list, then
-  #   iterate over the ratings and reuse the "When I check..." or
-  #   "When I uncheck..." steps in lines 89-95 of web_steps.rb
-  rating_list.split(/,/).each do |r|
+When /I (un)?check the following pages: (.*)/ do |uncheck, pages_list|
+  pages_list.split(/,/).each do |r|
     if uncheck
       uncheck(r.strip)
     else
@@ -36,8 +31,12 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
   end
 end
 
-Then /I should see all the movies/ do
-  # Make sure that all the movies in the app are visible in the table
-  rows = page.all('#movies tr').size - 1
-  assert rows == Movie.count
+Then /(.*) should have attribute (.*)/ do |pagename, attribute|
+  # Make sure that the given page has the given attribute
+  if attribute == "private"
+
+  # Make sure that the given page has been removed from the database
+  elsif attribute == "deleted"
+
+  end
 end

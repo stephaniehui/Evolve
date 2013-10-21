@@ -15,4 +15,5 @@ Scenario: delete the page that I am on
   Then I should see another page that asks me if I am sure I want to delete the page
   Then I press "yes_to_delete" button
   Then I should go back to the home admin page
+    And the page should be deleted
 

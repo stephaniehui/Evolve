@@ -1,0 +1,11 @@
+%meta{'http-equiv' => 'Content-Type', 'content' => 'text/html', 'charset' => 'utf-8'}
+= csrf_meta_tags
+%meta{:name => 'Title',  :content => @page.title}
+%meta{:name => 'Description', :content => @page.description}
+%link{:rel => 'image_src', :href => 'assets/evolve-logo-color.png'}
+%meta{:property => 'og:title', :content => @page.title}
+%meta{:property => 'og:url', :content => @page.url}
+%meta{:property => 'og:description', :content => @page.description}
+%meta{:property => 'og:type', :content => @page.content_type}
+%meta{:property => 'og:image', :content => 'assets/evolve-logo-color.png'}
+%meta{:property => 'og:site_name', :content => 'Evolve'}

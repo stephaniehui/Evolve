@@ -1,0 +1,13 @@
+= form_tag '/page' do
+  = field_set_tag do
+    = label_tag :path, 'Path:'
+    = text_field_tag :path
+    = label_tag :content, 'Content:'
+    = text_field_tag :Content
+    = label_tag :content_type, 'Content Type:'
+    = text_field_tag :content_type
+    = label_tag :description, 'Description:'
+    = text_field_tag :description
+    = label_tag :published, 'Published:'
+    = check_box_tag :published
+    = submit_tag 'Create Page'

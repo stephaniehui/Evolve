@@ -1,4 +1,6 @@
 Evolve::Application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
+
   authenticated :user do
     root :to => 'page#show'
   end

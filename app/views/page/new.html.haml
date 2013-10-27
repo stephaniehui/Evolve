@@ -1,13 +1,21 @@
-= form_tag '/page' do
-  = field_set_tag do
-    = label_tag :path, 'Path:'
-    = text_field_tag :path
-    = label_tag :content, 'Content:'
-    = text_field_tag :Content
-    = label_tag :content_type, 'Content Type:'
-    = text_field_tag :content_type
-    = label_tag :description, 'Description:'
-    = text_field_tag :description
-    = label_tag :published, 'Published:'
-    = check_box_tag :published
-    = submit_tag 'Create Page'
+= javascript_include_tag 'ckeditor/ckeditor.js'
+= form_for @page, url: {action: "create"} do |form|
+  = form.label :title, 'Title:'
+  = form.text_field :title
+  %br
+  = form.label :path, 'Path:'
+  = form.text_field :path
+  %br
+  = form.label :content, 'Content:'
+  = form.cktext_area :content, :ckeditor => {:toolbar=>'Full', :width=>'400px', :height=>'200px'}
+  %br
+  = form.label :content_type, 'Content Type:'
+  = form.text_field :content_type
+  %br
+  = form.label :description, 'Description:'
+  = form.text_field :description
+  %br
+  = form.label :published, 'Published:'
+  = form.check_box :published
+  %br
+  = form.submit 'Create Page'

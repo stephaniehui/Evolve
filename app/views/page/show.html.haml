@@ -1,5 +1,19 @@
-= provide :title, "Show"
-%h1
-  = @page.title
-%p
-  = @page.content
+!!! 5
+%html{'xmlns' => 'http://www.w3.org/1999/xhtml', 'xmlns:fb' => 'http://www.facebook.com/2008/fbml', 'xmlns:og' => 'http://ogp.me/ns#', 'xml:lang' => 'en', 'lang' => 'en'}
+  %head
+    %title
+      = yield :title
+    = stylesheet_link_tag 'application'
+    = stylesheet_link_tag 'theme.scss'
+    = stylesheet_link_tag 'jquery.lightbox-0.5.css'
+    = stylesheet_link_tag 'jquery-ui-1.8.16.custom.css'
+    = javascript_include_tag 'application'
+
+    = render 'page/partials/meta'
+
+  %body
+    = render 'page/partials/header'
+    .width_container
+      #middle
+        = render :partial => 'page/partials/content', :locals => {:content => @page.content}
+    = render 'page/partials/footer'

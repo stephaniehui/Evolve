@@ -1,4 +1,5 @@
 class PageController < ActionController::Base
+  before_filter :authenticate_user!, :except => [:show]
 
   def new
     @page = Page.new
@@ -7,14 +8,14 @@ class PageController < ActionController::Base
   def create
     page = Page.create(params[:page])
     if page.nil?
-      flash[:failed_to_create_user] = 'Failed to create user.'
+      flash[:failed_to_create_page] = 'Failed to create page.'
+    else
+      flash[:successfully_created_page] = "Successfully created page #{page.title}"
     end
   end
 
   def show
     @page = Page.find(params['id'])
-    # obviously this needs to change
-    @partials = []
     render 'page/show'
   end
 
@@ -25,7 +26,7 @@ class PageController < ActionController::Base
       when 'new', 'create'
         'empty'
       else
-        'application'
+        'base'
     end
   end
 

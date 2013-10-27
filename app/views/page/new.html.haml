@@ -1,5 +1,8 @@
-= javascript_include_tag :ckeditor
+= javascript_include_tag 'ckeditor/ckeditor.js'
 = form_for @page, url: {action: "create"} do |form|
+  = form.label :title, 'Title:'
+  = form.text_field :title
+  %br
   = form.label :path, 'Path:'
   = form.text_field :path
   %br

@@ -1,7 +1,7 @@
 class PageController < ActionController::Base
 
   def new
-    render 'page/new'
+    @page = Page.new
   end
 
   def create

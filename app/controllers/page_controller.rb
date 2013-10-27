@@ -7,11 +7,8 @@ class PageController < ActionController::Base
   def create
     page = Page.create(params[:page])
     if page.nil?
-      flash[:success?] = false
-    else
-      flash[:success?] = true
+      flash[:failed_to_create_user] = 'Failed to create user.'
     end
-    render
   end
 
   def show

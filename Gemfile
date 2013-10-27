@@ -1,6 +1,8 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.2.14'
+gem 'devise', '>= 2.2.3'
+gem 'figaro'
 
 # for Heroku deployment - as described in Ap. A of ELLS book
 group :development, :test do

@@ -1,3 +1,15 @@
-%h3 Home
-= @users.each do |user|
-  %p User: #{user.name}
+%h1 Pages
+%table
+  %tr.header
+    %td Id
+    %td Title
+    %td Path
+    %td Created At
+    %td Updated At
+  - @pages.each do |page|
+    %tr
+      %td #{page.id}
+      %td #{page.title}
+      %td #{page.path}
+      %td #{page.created_at}
+      %td #{page.updated_at}

@@ -1,6 +1,10 @@
 class PageController < ActionController::Base
   before_filter :authenticate_user!, :except => [:show]
 
+  def index
+    @pages = Page.all()
+  end
+
   def new
     @page = Page.new
   end
@@ -23,7 +27,7 @@ class PageController < ActionController::Base
 
   def resolve_layout
     case action_name
-      when 'new', 'create'
+      when 'new', 'create', 'index'
         'empty'
       else
         'base'

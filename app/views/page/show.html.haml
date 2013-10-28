@@ -15,5 +15,5 @@
     = render 'page/partials/header'
     .width_container
       #middle
-        = render :partial => 'page/partials/content', :locals => {:content => @page.content}
+        = raw @page.content
     = render 'page/partials/footer'

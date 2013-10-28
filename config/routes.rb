@@ -1,14 +1,12 @@
 Evolve::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
 
-  authenticated :user do
-    root :to => 'page#show'
-  end
   devise_for :users
-  resources :page, :users
+  resources :users, :page
 
+  match '/', :to => 'page#show', :id => Page.find_by_path('/').id
   Page.all.each do |page|
-    match page.url, :to => 'page#show', :id => page.id
+    match page.path, :to => 'page#show', :id => page.id
   end
 
 end

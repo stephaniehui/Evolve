@@ -4,6 +4,8 @@ class Page < ActiveRecord::Base
 
   validates :path, presence: true, uniqueness: true
 
-  validates :title, :url, presence: true, uniqueness: true
+  validates :title, presence: true
+
+  validates :url, presence: true, uniqueness: true
 
 end

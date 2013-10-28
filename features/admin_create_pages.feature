@@ -13,8 +13,17 @@ Background: I am logged in as an administrator
 Scenario: Make a new page
   When I press "Create a new page"
   Then I should be on the creation page 
-  And I fill in "Header" with "Proposition 13"
-  And I fill in "Body" with "Info about Prop 13"
-  And I press "Create"
+  And I fill in "Title" with "Proposition 13"
+  And I fill in "Path" with "prop13"
+  And I fill in "Content Type:" with "Text"
+  And I fill in "Description" with "Details"
+  And I press "Create Page"
   Then I should be on the Evolve Admin home page
-  And I should see "New page created."
+  And I should see "Successfully created page Proposition 13"
+
+Scenario: (Sad path) Make a new page
+  When I press "Create a new page"
+  Then I should be on the creation page
+  When I press "Create Page"
+  Then I should be on the Evolve Admin home page
+  And I should see "Failed to create page."

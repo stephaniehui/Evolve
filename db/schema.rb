@@ -13,12 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20131027014618) do
 
-  create_table "blocks", :force => true do |t|
-    t.string   "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "pages", :force => true do |t|
     t.string   "path"
     t.string   "title"

@@ -11,8 +11,9 @@ class PageController < ActionController::Base
 
   def create
     page = Page.create(params[:page])
+    puts page
     if page.nil?
-      flash[:failed_to_create_page] = 'Failed to create page.'
+      flash[:failed_to_create_page] = "Failed to create page."
     else
       flash[:successfully_created_page] = "Successfully created page #{page.title}"
     end

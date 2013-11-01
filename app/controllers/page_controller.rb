@@ -33,5 +33,4 @@ class PageController < ActionController::Base
         'base'
     end
   end
-
 end

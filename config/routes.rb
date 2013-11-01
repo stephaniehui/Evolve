@@ -13,4 +13,5 @@ Evolve::Application.routes.draw do
       end
     end
   end
+  match '*bad_route', :to => 'errors#routing'
 end

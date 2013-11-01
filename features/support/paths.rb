@@ -19,10 +19,13 @@ module NavigationHelpers
     when /^the (Evolve )? Admin home\s?page$/
       admin_path
 
-    when /^the creation page/
-      creation_path
+    when /^the page creation page/
+      new_page_path
 
-    when /^the address (.*)/ 
+    when /^the page index page/
+      page_path
+
+    when /^the address (.*)/
       $1
 
     # Add more mappings here.

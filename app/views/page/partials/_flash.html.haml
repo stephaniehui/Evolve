@@ -1,4 +1,5 @@
-- if flash[:warning]
-  %p.warning #{flash[:warning]}
-- if flash[:notice]
-  %p.notice #{flash[:notice]}
+- if flash
+  - if flash[:warning]
+    %p.warning #{flash[:warning]}
+  - if flash[:notice]
+    %p.notice #{flash[:notice]}

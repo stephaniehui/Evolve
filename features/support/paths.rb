@@ -13,8 +13,8 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /^the (Evolve )?home\s?page$/ then '/'
-    # when /^the movies page$/ then '/movies'
+    when /^the (Evolve )?home\s?page$/
+      '/'
 
     when /^the (Evolve )? Admin home\s?page$/
       admin_path
@@ -23,7 +23,7 @@ module NavigationHelpers
       new_page_path
 
     when /^the page index page/
-      page_path
+      '/page'
 
     when /^the address (.*)/
       $1

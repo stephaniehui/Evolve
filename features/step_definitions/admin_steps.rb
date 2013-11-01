@@ -1,23 +1,6 @@
-Given /the following pages exist/ do |pages_table|
-  pages_table.hashes.each do |page|
-    # each returned element will be a hash whose key is the table header.
-    # you should arrange to add that movie to the database here.
-    Page.create!(page)
-  end
-  #flunk "Unimplemented"
-end
+require('factory_girl')
 
-# Make sure that one string (regexp) occurs before or after another one
-#   on the same page
-
-Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
-  #  ensure that that e1 occurs before e2.
-  #  page.body is the entire content of the page as a string.
-  assert page.body =~ /(#{e1}).*(#{e2})/m
-  #flunk "Unimplemented"
-end
-
-When /I log in as administrator/ do 
+When /I log in as administrator/ do
   redirect_to(admin_page_path)
 end
 
@@ -39,4 +22,18 @@ Then /(.*) should have attribute (.*)/ do |pagename, attribute|
   elsif attribute == "deleted"
 
   end
+end
+
+Given /^I am not authenticated$/ do
+  visit('/users/sign_out') # ensure that at least
+end
+
+Given /^I am a new, authenticated user$/ do
+  user = FactoryGirl.create(:user, :rand_name, :seq_email, :seq_password)
+  user.should be_valid
+
+  visit '/users/sign_in'
+  fill_in "user_email", :with => user.email
+  fill_in "user_password", :with => user.password
+  click_button "Sign in"
 end

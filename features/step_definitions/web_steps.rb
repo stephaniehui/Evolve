@@ -21,8 +21,10 @@
 
 require 'uri'
 require 'cgi'
+require 'factory_girl'
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "selectors"))
+require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "seed"))
 
 module WithinHelpers
   def with_scope(locator)
@@ -251,4 +253,27 @@ end
 
 Then /^show me the page$/ do
   save_and_open_page
+end
+
+Given /the following pages exist/ do |pages_table|
+  pages_table.hashes.each do |page|
+    # each returned element will be a hash whose key is the table header.
+    # you should arrange to add that movie to the database here.
+    Page.create!(page)
+  end
+  #flunk "Unimplemented"
+end
+
+# Make sure that one string (regexp) occurs before or after another one
+#   on the same page
+
+Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
+  #  ensure that that e1 occurs before e2.
+  #  page.body is the entire content of the page as a string.
+  assert page.body =~ /(#{e1}).*(#{e2})/m
+  #flunk "Unimplemented"
+end
+
+Given(/^Routes have been updated$/) do
+  Evolve::Application.reload_routes!
 end

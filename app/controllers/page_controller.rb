@@ -11,10 +11,10 @@ class PageController < ActionController::Base
 
   def create
     page = Page.create(params[:page])
-    if page.nil?
-      flash[:warning] = "Failed to create page."
-    else
+    if page.valid?
       flash[:notice] = "Successfully created page #{page.title}"
+    else
+      flash[:warning] = "Failed to create page."
     end
     redirect_to :action => 'index'
   end

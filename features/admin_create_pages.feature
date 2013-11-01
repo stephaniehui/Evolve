@@ -5,25 +5,24 @@ Feature: Administrators should be able to create new pages
    I want to make new pages
 
 Background: I am logged in as an administrator
-  
   Given I am on the Evolve home page
-  When I log in as administrator
-  Then I should be on the Evolve Admin home page 
+  Given I am a new, authenticated user
+  Then I should be on the Evolve home page
 
-Scenario: Make a new page
-  When I press "Create a new page"
-  Then I should be on the creation page 
-  And I fill in "Title" with "Proposition 13"
-  And I fill in "Path" with "prop13"
-  And I fill in "Content Type:" with "Text"
-  And I fill in "Description" with "Details"
-  And I press "Create Page"
-  Then I should be on the Evolve Admin home page
-  And I should see "Successfully created page Proposition 13"
+  Scenario: If I am logged in I can create a new page
+    When I am on the page creation page
+    Then I should see "Title:" before "Path:"
+    And I fill in "Title" with "Proposition 13"
+    And I fill in "Path" with "/prop13"
+    And I fill in "Content Type:" with "Text"
+    And I fill in "Description" with "Details"
+    And I press "Create Page"
+    Then I should be on the page index page
+    And I should see "Successfully created page Proposition 13"
 
-Scenario: (Sad path) Make a new page
-  When I press "Create a new page"
-  Then I should be on the creation page
-  When I press "Create Page"
-  Then I should be on the Evolve Admin home page
-  And I should see "Failed to create page."
+  Scenario: (Sad path) If page creation fails I am warned
+    When I am on the page creation page
+    And I fill in "Title" with "Proposition 13"
+    And I press "Create Page"
+    Then I should be on the page index page
+    And I should see "Failed to create page."

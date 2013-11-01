@@ -28,6 +28,9 @@ module NavigationHelpers
     when /^the address (.*)/
       $1
 
+    when /^the page (.*)/
+      Page.find_by_title($1).path
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

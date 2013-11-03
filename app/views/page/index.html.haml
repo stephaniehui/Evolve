@@ -7,6 +7,9 @@
     %td Path
     %td Created At
     %td Updated At
+    %td View Page
+    %td Edit Page
+    %td Delete Page
   - @pages.each do |page|
     %tr
       %td #{page.id}
@@ -14,3 +17,9 @@
       %td #{page.path}
       %td #{page.created_at}
       %td #{page.updated_at}
+      %td= button_to "View #{page.title}", page_path(page.id)
+      %td= button_to "Edit #{page.title}", edit_page_path(page.id)
+      %td= button_to "Delete #{page.title}", page_path(page.id), :method => :delete, :confirm => 'Are you sure?'
+
+= button_to 'Add new page', new_page_path
+

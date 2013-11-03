@@ -37,3 +37,24 @@ Given /^I am a new, authenticated user$/ do
   fill_in "user_password", :with => user.password
   click_button "Sign in"
 end
+
+Then(/^"(.*?)" should not be published$/) do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+Given /^(?:|I )am on the edit page for (.+)$/ do |page_name|
+  @page = Page.find_by_title(page_name)
+  visit edit_page_path(@page)
+end
+
+When /^I confirm popup$/ do
+  page.driver.browser.switch_to.alert.accept    
+end
+
+When /^I dismiss popup$/ do
+  page.driver.browser.switch_to.alert.dismiss
+end
+
+Then(/^"(.*?)" should contain "(.*?)"$/) do |field, labeltext|
+    find_field(field).value.should == labeltext
+end

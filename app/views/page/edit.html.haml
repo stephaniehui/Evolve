@@ -1,5 +1,5 @@
 = javascript_include_tag 'ckeditor/ckeditor.js'
-= form_for @page, url: {action: "create"} do |form|
+= form_for @page, url: {action: "update"} do |form|
   = form.label :title, 'Title:'
   = form.text_field :title
   %br
@@ -18,5 +18,5 @@
   = form.label :published, 'Published:'
   = form.check_box :published
   %br
-  = form.submit 'Create Page'
-  = link_to 'Cancel Creation', page_index_path
+  = form.submit 'Update Page'
+  = link_to 'Cancel Changes', page_index_path

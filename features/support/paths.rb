@@ -31,6 +31,10 @@ module NavigationHelpers
     when /^the page (.*)/
       Page.find_by_title($1).path
 
+    when /^(.+)'s edit page$/i
+      page = Page.find_by_title($1)
+      edit_page_path(page.id)
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

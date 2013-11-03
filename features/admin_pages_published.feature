@@ -5,19 +5,16 @@ Feature: Admin should be able to mark pages as private
 
 Background: I am logged in as administrator
   Given I am on the Evolve home page
-  When I log in as administrator
-  Then I should be on the Evolve Admin home page
-  Given the following pages exist:
-  | title                   | attribute | modified_date |
-  | Blog1                   | public    | 25-Nov-2012   |
-  | Blog2                   | public    | 26-Oct-2012   |
-  | Index Page              | public    | 21-Jul-2012   |
-  | Emails                  | private   | 10-Aug-2011   |
-  | Blog3                   | private   | 5-Jan-2011    |
+    And I am a new, authenticated user
+    And the following pages exist:
+    | title                   | path      | content      | published |
+    | Blog1                   | /blog1    | <p>Blog1</p> | true      |
+    | Blog2                   | /blog2    | <p>Blog2</p> | false     |
+    | Blog3                   | /blog3    | <p>Blog3</p> | true      |
 
 Scenario: Mark pages as private/unviewable
-  When I check the following pages: "Blog2"
+  When I check the following pages: "Blog3"
     And I press "Make Private"
-  Then "Blog2" should have attribute "private"
+  Then "Blog3" should not be published
 
 

@@ -23,6 +23,24 @@ class PageController < ActionController::Base
     @page = Page.find(params['id'])
   end
 
+  def edit
+    @page = Page.find(params['id'])
+  end
+
+  def update
+    @page = Page.find(params['id'])
+    @page.update_attributes!(params[:page])
+    flash[:notice] = "#{@page.title} was successfully updated."
+    redirect_to page_path(@page)
+  end
+  
+  def destroy
+    @page = Page.find(params['id'])
+    @page.destroy
+    flash[:notice] = "Page '#{@page.title}' deleted."
+    redirect_to :action => 'index'
+  end
+
   private
 
   def resolve_layout

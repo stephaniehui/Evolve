@@ -6,14 +6,16 @@ Feature: Admin should be able to delete pages
 
 Background: a page exists that the admin wants to delete
 
-  Given the page I want to delete exists
+  Given the following pages exist:
+    | title                   | path      | content      | published |
+    | Blog1                   | /blog1    | <p>Blog1</p> | true      |
+    | Blog2                   | /blog2    | <p>Blog2</p> | false     |
 
-  And I am on the edit page 
+  And I am on the Evolve home page
 
 Scenario: delete the page that I am on
-  When I press "delete_page" button
-  Then I should see another page that asks me if I am sure I want to delete the page
-  Then I press "yes_to_delete" button
-  Then I should go back to the home admin page
-    And the page should be deleted
+  When I press "Delete Blog2"
+    And I confirm popup
+  Then I should be on the Evolve home page
+    And I should see "Page 'Blog2' deleted."
 

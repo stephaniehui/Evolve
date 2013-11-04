@@ -10,7 +10,7 @@ Background: static html pages exist that the supporter wants to access
     | Blog1                   | /blog1    | <p>Blog1</p> | true      |
     | Blog2                   | /blog2    | <p>Blog2</p> | false     |
 
-Scenario: view public pages
+Scenario: View public pages
   When I go to the page Blog1
   Then I should see "Blog1"
   When I go to the page Blog2

@@ -7,6 +7,7 @@ Feature: website static html pages are viewable by supporters
 Background: static html pages exist that the supporter wants to access
   Given the following pages exist:
     | title                   | path      | content      | published |
+    | Evolve!                 | /         | <p>Evolve!</p> | true    |
     | Blog1                   | /blog1    | <p>Blog1</p> | true      |
     | Blog2                   | /blog2    | <p>Blog2</p> | false     |
 

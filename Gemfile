@@ -10,11 +10,6 @@ gem 'paperclip'
 group :development, :test do
   gem 'sqlite3'
   gem 'ruby-debug19'
-  gem 'capybara'
-  gem 'launchy'
-  gem 'rspec-rails'
-  gem 'factory_girl_rails', '>= 4.2.0'
-  gem 'database_cleaner'
 end
 
 group :test do
@@ -22,6 +17,14 @@ group :test do
   gem 'cucumber-rails-training-wheels'
   gem 'email_spec'
   gem 'rspec-rails'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'rspec-rails'
+  gem 'rubyzip',  '~> 0.9.9'
+  gem 'selenium-webdriver', '2.35.0'
+  gem 'factory_girl_rails', '>= 4.2.0'
+  gem 'database_cleaner'
+  gem 'simplecov'
 end
 
 group :production do

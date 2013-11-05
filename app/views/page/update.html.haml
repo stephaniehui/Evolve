@@ -1,5 +1,5 @@
 = javascript_include_tag 'ckeditor/ckeditor.js'
-= form_for @page, url: {action: "create"} do |form|
+= form_for @page, url: {action: @page_method.to_s} do |form|
   = form.label :title, 'Title:'
   = form.text_field :title
   %br
@@ -18,5 +18,8 @@
   = form.label :published, 'Published:'
   = form.check_box :published
   %br
-  = form.submit 'Create Page'
-  = link_to 'Cancel Creation', page_index_path
+  = form.submit @page_method == :update ? 'Update Page' : 'Create Page'
+  = link_to 'Cancel', page_index_path
+  - if ! @page.new_record?
+    = button_to "Delete #{@page.title}", page_path(@page.id), :method => :delete, data: {:confirm => 'Are you sure?'}
+

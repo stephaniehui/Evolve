@@ -1,8 +1,8 @@
 Feature: Admin should be able to delete pages
  
   As an admin of the website
-  So that I can easily delete a page I've created before
-  I want to delete the page 
+  So that I can permanently remove static pages
+  I can delete pages
 
 Background: a page exists that the admin wants to delete
 
@@ -11,11 +11,14 @@ Background: a page exists that the admin wants to delete
     | Blog1                   | /blog1    | <p>Blog1</p> | true      |
     | Blog2                   | /blog2    | <p>Blog2</p> | false     |
 
-  And I am on the Evolve home page
+    And I am a new, authenticated user
 
-Scenario: delete the page that I am on
-  When I press "Delete Blog2"
+@javascript
+Scenario: The admin can delete a page
+  When I am on the page index page
+    And I follow "Edit Blog2"
+  When I press "Delete page"
     And I confirm popup
-  Then I should be on the Evolve home page
-    And I should see "Page 'Blog2' deleted."
+  Then I should be on the page index page
+    And I should see "Page 'Blog2' was deleted."
 

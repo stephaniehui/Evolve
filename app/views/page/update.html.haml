@@ -18,8 +18,8 @@
   = form.label :published, 'Published:'
   = form.check_box :published
   %br
-  = form.submit @page_method == :update ? 'Update Page' : 'Create Page'
-  = link_to 'Cancel', page_index_path
-  - if ! @page.new_record?
-    = button_to "Delete #{@page.title}", page_path(@page.id), :method => :delete, data: {:confirm => 'Are you sure?'}
+  = form.submit (@page_method == :update ? 'Update Page' : 'Create Page')
+= link_to 'Cancel', page_index_path
+- if ! @page.new_record?
+  = button_to "Delete page", @page, :confirm => 'Are you sure?', :method => :delete
 

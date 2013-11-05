@@ -1,14 +1,8 @@
 FactoryGirl.define do
   factory :user do
-    trait :static_email do
+    trait :static do
       email 'testing@man.net'
-    end
-
-    trait :static_password do
       password 'secretpass'
-    end
-
-    trait :static_name do
       name 'John Doe'
     end
 
@@ -23,5 +17,9 @@ FactoryGirl.define do
     trait :rand_name do
       sequence(:name) {|n| ('a'..'z').to_a.shuffle[0,8].join}
     end
+  end
+
+  def self.create_or_return_admin_user
+    @admin ||= Factory(:user, :static)
   end
 end

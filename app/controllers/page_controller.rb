@@ -1,5 +1,6 @@
 class PageController < ActionController::Base
   before_filter :authenticate_user!, :except => [:show]
+  layout :resolve_layout
 
   def index
     @pages = Page.all()
@@ -7,6 +8,8 @@ class PageController < ActionController::Base
 
   def new
     @page = Page.new
+    @page_method = :create
+    render 'page/update'
   end
 
   def create
@@ -21,23 +24,26 @@ class PageController < ActionController::Base
 
   def show
     @page = Page.find(params['id'])
+    render 'layouts/site'
   end
 
   def edit
     @page = Page.find(params['id'])
+    @page_method = :update
+    render 'page/update'
   end
 
   def update
     @page = Page.find(params['id'])
     @page.update_attributes!(params[:page])
-    flash[:notice] = "#{@page.title} was successfully updated."
-    redirect_to page_path(@page)
+    flash[:notice] = "Successfully updated page '#{@page.title}'"
+    redirect_to :action => 'index'
   end
   
   def destroy
     @page = Page.find(params['id'])
     @page.destroy
-    flash[:notice] = "Page '#{@page.title}' deleted."
+    flash[:notice] = "Page '#{@page.title}' was deleted."
     redirect_to :action => 'index'
   end
 
@@ -45,10 +51,10 @@ class PageController < ActionController::Base
 
   def resolve_layout
     case action_name
-      when 'new', 'create', 'index'
-        'empty'
+      when 'show'
+        'layouts/site'
       else
-        'base'
+        'layouts/admin'
     end
   end
 end

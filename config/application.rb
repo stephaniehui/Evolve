@@ -60,8 +60,8 @@ module Evolve
     # Enable the asset pipeline
     config.assets.enabled = true
 
-    # Compile assets
-    config.assets.compile = true
+    # precompile javascript, css, and scss
+    config.assets.precompile = %w( *.js *.css *.scss )
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'

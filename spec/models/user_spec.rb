@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#new' do
+    it 'creates a new user given a name, email, and password' do
+      user = FactorYGirl.create(:user, :static)
+      user.should be_valid
+    end
+  end
 end

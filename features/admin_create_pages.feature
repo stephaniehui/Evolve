@@ -28,8 +28,9 @@ Background: I am logged in as an administrator
     When I am on the page creation page
       And I fill in "Title" with "Proposition 13"
       And I press "Create Page"
-    Then I should be on the page index page
-      And I should see "Failed to create page."
+    Then I should be on the page creation page
+      And I should see "The following error occurred:"
+      And I should see "Path can't be blank"
 
   Scenario: (Sad path) If I create two pages with the same path it fails
     When I am on the page creation page
@@ -46,5 +47,6 @@ Background: I am logged in as an administrator
       And I fill in "Content Type:" with "Text"
       And I fill in "Description" with "Details"
       And I press "Create Page"
-    Then I should be on the page index page
-      And I should see "Failed to create page."
+    Then I should be on the page creation page
+      And I should see "The following error occurred:"
+      And I should see "Path has already been taken"

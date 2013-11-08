@@ -7,19 +7,21 @@ class PageController < ActionController::Base
   end
 
   def new
-    @page = Page.new
+    @page = Page.new(params[:page])
     @page_method = :create
-    render 'page/update'
+    render 'page/edit'
   end
 
   def create
     page = Page.create(params[:page])
     if page.valid?
       flash[:notice] = "Successfully created page #{page.title}"
+      redirect_to :action => 'index'
     else
       flash[:warning] = "Failed to create page."
+      flash[:page_validation_errors] = page.errors.full_messages
+      redirect_to :action => 'new', :params => params
     end
-    redirect_to :action => 'index'
   end
 
   def show
@@ -33,15 +35,24 @@ class PageController < ActionController::Base
 
   def edit
     @page = Page.find(params['id'])
+    if params[:page]
+      @page.assign_attributes(params[:page])
+    end
     @page_method = :update
-    render 'page/update'
+    render 'page/edit'
   end
 
   def update
     @page = Page.find(params['id'])
-    @page.update_attributes!(params[:page])
-    flash[:notice] = "Successfully updated page '#{@page.title}'"
-    redirect_to :action => 'index'
+    @page.update_attributes(params[:page])
+    if @page.valid?
+      flash[:notice] = "Successfully updated page '#{@page.title}'"
+      redirect_to :action => 'index'
+    else
+      flash[:warning] = "Failed to update page."
+      flash[:page_validation_errors] = @page.errors.full_messages
+      redirect_to :action => 'edit', :params => params
+    end
   end
   
   def destroy

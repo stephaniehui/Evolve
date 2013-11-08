@@ -1,0 +1,5 @@
+- if flash[:page_validation_errors]
+  %p.validation The following error#{'s' unless flash[:page_validation_errors].size == 1} occurred:
+  - flash[:page_validation_errors].each do |message|
+    %li #{message}
+

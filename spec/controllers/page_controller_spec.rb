@@ -27,7 +27,7 @@ describe PageController, :type => :controller do
       params = FactoryGirl.attributes_for(:page, :published, :static_title)
       post :create, params
       flash[:warning].should_not be_nil
-      response.should redirect_to('/page')
+      flash[:page_validation_errors].should_not be_nil
     end
   end
 
@@ -62,7 +62,7 @@ describe PageController, :type => :controller do
     it "should redirect to the edit page" do
       Page.stub(:find)
       get :edit, {:id => 1}
-      response.should render_template 'page/update'
+      response.should render_template 'page/edit'
     end
 
     it 'should make the page info available to the template'
@@ -72,7 +72,7 @@ describe PageController, :type => :controller do
     it 'should render edit movie template' do
       Page.stub(:find)
       get :edit, {:id => 1}
-      response.should render_template 'page/update'
+      response.should render_template 'page/edit'
     end
       
     it 'should call a model method to update data' do

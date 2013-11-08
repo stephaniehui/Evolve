@@ -7,10 +7,9 @@ Evolve::Application.routes.draw do
   # a kludge to work initial page table creation issues
   if ActiveRecord::Base.connection.tables.include?('pages')
     Page.all.each do |page|
-      if page.published?
-        match page.path, :to => 'page#show', :id => page.id
-      end
+      match page.path, :to => 'page#show', :id => page.id
     end
   end
-  match '*bad_route', :to => 'errors#routing'
+  match '/error/404', :to => 'error#not_found_404', :as => :error_404_path
+  match '*bad_route', :to => 'error#not_found_404'
 end

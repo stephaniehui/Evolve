@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'yaml'
 require 'factory_girl'
 
-describe Page do
+describe Page, :type => :model do
   describe "#new" do
     it "creates a page given a title and path" do
       FactoryGirl.build(:page, :static_path, :static_title).should be_valid

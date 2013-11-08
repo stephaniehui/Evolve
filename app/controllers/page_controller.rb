@@ -24,7 +24,11 @@ class PageController < ActionController::Base
 
   def show
     @page = Page.find(params['id'])
-    render 'layouts/site'
+    if @page.published?
+      render 'layouts/site'
+    else
+      redirect_to :error_404_path
+    end
   end
 
   def edit

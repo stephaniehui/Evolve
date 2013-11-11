@@ -27,6 +27,7 @@
 
       function codeAddress() {
         var address = document.getElementById("address").value;
+        var codestring = "<p><img border=0 src='//maps.googleapis.com/maps/api/staticmap?center=";
         geocoder.geocode( { 'address': address}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             map.setCenter(results[0].geometry.location);
@@ -34,6 +35,8 @@
                 map: map,
                 position: results[0].geometry.location
             });
+            codestring += results[0].geometry.location + "&zoom=15&size=470x425&markers=" + results[0].geometry.location + "&maptype=roadmap&sensor=false'/></p>";
+            document.codeform.codefield.value = codestring;
           } else {
             alert("Geocode was not successful for the following reason: " + status);
           }
@@ -48,4 +51,5 @@
       %input#address{type: "textbox", value: "Berkeley, CA"}/
       %input{onclick: "codeAddress()", type: "button", value: "Search Address"}/
 
-
+%form{name: "codeform"}
+  %textarea{cols: "70", rows: "2", name: "codefield", type: "text", value: "<p><img border=0 src='//maps.googleapis.com/maps/api/staticmap?center=(37.8715926, -122.27274699999998)&zoom=15&size=470x425&markers=(37.8715926, -122.27274699999998)&maptype=roadmap&sensor=false'/></p>"}/

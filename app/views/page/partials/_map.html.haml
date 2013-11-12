@@ -10,7 +10,7 @@
         margin: 0px;
         padding: 0px
       }
-    %script{src: "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"}
+    %script{src: "https://maps.googleapis.com/maps/api/js?key={API_KEY}&sensor=false"}
     :javascript
       var geocoder;
       var map;
@@ -52,4 +52,4 @@
       %input{onclick: "codeAddress()", type: "button", value: "Search Address"}/
 
 %form{name: "codeform"}
-  %textarea{cols: "70", rows: "2", name: "codefield", type: "text", value: "<p><img border=0 src='//maps.googleapis.com/maps/api/staticmap?center=(37.8715926, -122.27274699999998)&zoom=15&size=470x425&markers=(37.8715926, -122.27274699999998)&maptype=roadmap&sensor=false'/></p>"}/
+  %textarea{cols: "70", rows: "2", name: "codefield", type: "text", value: ""} Html code is generated here

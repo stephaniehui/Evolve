@@ -5,6 +5,7 @@ gem 'devise', '>= 2.2.3'
 gem 'figaro'
 gem 'ckeditor'
 gem 'paperclip'
+gem 'aws-sdk'
 
 # for Heroku deployment - as described in Ap. A of ELLS book
 group :development, :test do

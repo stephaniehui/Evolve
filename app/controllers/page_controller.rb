@@ -8,19 +8,24 @@ class PageController < ActionController::Base
 
   def new
     @page = Page.new(params[:page])
-    @page_method = :create
-    render 'page/edit'
+  end
+
+  def edit
+    @page = Page.find(params['id'])
+    if params[:page]
+      @page.assign_attributes(params[:page])
+    end
   end
 
   def create
     page = Page.create(params[:page])
     if page.valid?
       flash[:notice] = "Successfully created page #{page.title}"
-      redirect_to :action => 'index'
+      redirect_to :action => :index
     else
       flash[:warning] = "Failed to create page."
       flash[:page_validation_errors] = page.errors.full_messages
-      redirect_to :action => 'new', :params => params
+      redirect_to :action => :new, :params => params
     end
   end
 
@@ -33,25 +38,16 @@ class PageController < ActionController::Base
     end
   end
 
-  def edit
-    @page = Page.find(params['id'])
-    if params[:page]
-      @page.assign_attributes(params[:page])
-    end
-    @page_method = :update
-    render 'page/edit'
-  end
-
   def update
     @page = Page.find(params['id'])
     @page.update_attributes(params[:page])
     if @page.valid?
       flash[:notice] = "Successfully updated page '#{@page.title}'"
-      redirect_to :action => 'index'
+      redirect_to :action => :index
     else
       flash[:warning] = "Failed to update page."
       flash[:page_validation_errors] = @page.errors.full_messages
-      redirect_to :action => 'edit', :params => params
+      redirect_to :action => :edit, :params => params
     end
   end
   
@@ -59,7 +55,7 @@ class PageController < ActionController::Base
     @page = Page.find(params['id'])
     @page.destroy
     flash[:notice] = "Page '#{@page.title}' was deleted."
-    redirect_to :action => 'index'
+    redirect_to :action => :index
   end
 
   private

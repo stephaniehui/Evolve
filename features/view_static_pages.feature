@@ -4,7 +4,7 @@ Feature: website static html pages are viewable by supporters
   So that I can learn about current political issues in California 
   I want to see published static html pages on the Evolve website
 
-Background: static html pages exist that the supporter wants to access
+Background: Static HTML pages exist that the supporter wants to access
   Given the following pages exist:
     | title                   | path      | content      | published |
     | Evolve!                 | /         | <p>Evolve!</p> | true    |

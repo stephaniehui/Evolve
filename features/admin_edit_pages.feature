@@ -5,13 +5,12 @@ Feature: Administrators should be able to edit existing pages
   I can edit a page's fields
 
   Background: I am logged in as an administrator
-    Given I am on the Evolve home page
-    And I am a new, authenticated user
-    And the following pages exist:
+    Given the following pages exist:
       | title                   | path      | content        | published |
+      | Evolve                  | /         | <p>Evolve!</p> | true      |
       | Blog1                   | /blog1    | <p>Blog1</p>   | true      |
       | Blog2                   | /blog2    | <p>Blog2</p>   | true      |
-
+      And I am a new, authenticated user
 
   Scenario: I can create a new page and edit the page
     When I am on the page index page

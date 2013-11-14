@@ -5,7 +5,9 @@ Feature: Administrators should be able to create new pages
    I want to make new pages
 
 Background: I am logged in as an administrator
-  Given I am on the Evolve home page
+  Given the following pages exist:
+    | title                   | path      | content        | published |
+    | Evolve                  | /         | <p>Evolve!</p> | true      |
     And I am a new, authenticated user
 
   Scenario: If I am logged in I can create a new page and edit the page

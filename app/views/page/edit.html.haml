@@ -24,5 +24,6 @@
 - if ! @page.new_record?
   = button_to "Delete page", @page, :confirm => 'Are you sure?', :method => :delete
 
-= render 'page/partials/map'
+- if params[:map]
+  = render 'page/partials/map'
 

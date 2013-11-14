@@ -4,13 +4,12 @@ Feature: Admin should be able to delete pages
   So that I can permanently remove static pages
   I can delete pages
 
-Background: a page exists that the admin wants to delete
-
+Background: A page exists that the admin wants to delete
   Given the following pages exist:
-    | title                   | path      | content      | published |
-    | Blog1                   | /blog1    | <p>Blog1</p> | true      |
-    | Blog2                   | /blog2    | <p>Blog2</p> | false     |
-
+    | title                   | path      | content         | published |
+    | Evolve                  | /         | <p>Evolve!</p>  | true      |
+    | Blog1                   | /blog1    | <p>Blog1</p>    | true      |
+    | Blog2                   | /blog2    | <p>Blog2</p>    | false     |
     And I am a new, authenticated user
 
 @javascript

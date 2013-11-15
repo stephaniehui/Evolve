@@ -2,13 +2,13 @@
   .width_container
     #header_social
       %a{:href => 'http://www.facebook.com/evolve.ca', :title => 'Link to Facebook'}
-        %img.social{:src => 'assets/fb-button.png', :alt => 'Like Evolve on Facebook', :width => '28px', :height => '28px'}
+        = image_tag 'fb-button.png', class: 'social', alt: 'Like Evolve on Facebook', size: "28x28"
       %a{:href => 'http://www.twitter.com/evolve_ca', :title => 'Link to Twitter'}
-        %img.social{:src => 'assets/twitter-button.png', :alt => 'Follow evolve_ca on Twitter', :width => '28px', :height => '28px'}
+        = image_tag 'twitter-button.png', class: 'social', alt: 'Follow evolve_ca on Twitter', size: '28x28'
       %a{:href => 'https://plus.google.com/105363919375093824504', :title => 'Link to Google Plus'}
-        %img.social{:src => 'assets/gplus-button.png', :alt => 'Plus 1 this', :width => '28px', :height => '28px'}
+        = image_tag 'gplus-button.png', class: 'social', alt: 'Plus 1 this', size: '28x28'
     %a{:href => '/'}
-      %img#logo.padtopmore{:src => 'assets/evolve-logo2.png', :width => '247'}
+      = image_tag 'evolve-logo2.png', class: 'padtopmore', id: 'logo', width: 247
     #header_tabs
       #about_tab.tab
         %a.hover-underline-white{:href => 'about_us', :title => 'About Us'} about us

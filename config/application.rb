@@ -61,7 +61,8 @@ module Evolve
     config.assets.enabled = true
 
     # precompile javascript, css, and scss
-    config.assets.precompile = %w( *.js *.css *.scss )
+    config.assets.precompile = %w( *.js *.css *.scss *.png *.jpg)
+    config.assets.compile = false
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'

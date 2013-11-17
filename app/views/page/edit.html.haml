@@ -1,14 +1,16 @@
-
-
+= stylesheet_link_tag 'page'
 = stylesheet_link_tag 'application'
 = javascript_include_tag 'ckeditor/ckeditor.js'
 = render partial: 'header'
 
 %h1{:class => "center"} Edit Article
 = render 'validation'
-= render partial: 'page_form', locals: {page: @page, page_method: 'update'}
+= render partial: 'page_form', :class => "center", locals: {page: @page, page_method: 'update'}
 
 
 - if params[:map]
   = render 'map'
+
+
+= render partial: 'footer'
 

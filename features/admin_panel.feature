@@ -11,8 +11,8 @@ Feature: Administrators should be able to use the admin panel to modify certain 
 
 Scenario: I can look at the pages I have created
 	Given I am on the Admin Panel page
-	Then I should see Pages
-	When I press Pages
+	Then I should see 'Manage Pages'
+	When I press 'Manage Pages'
 	Then I should see "Evolve"
 	And I should see "Edit 'Evolve'"
 	And I should see "Delete 'Evolve'"
@@ -20,20 +20,20 @@ Scenario: I can look at the pages I have created
 
 Scenario: I can see the files I have uploaded
 	Given I am on the Admin Panel page
-	Then I should see Files
-	When I press Files
+	Then I should see 'Manage Files'
+	When I press 'Manage Files'
 	Then I should see "Doc1"
 	And I should see "Delete File"
 	
 Scenario: I can delete the files I have uploaded
-	Given I am on the Files page
+	Given I am on the 'Manage Files' page
 	Then I should see "Rar1"
 	When I press "Delete Rar1"
 	And I confirm popup
 	Then I should not see "Rar1"
 	
 Scenario: I can download the files I have uploaded
-	Given I am on the Files page
+	Given I am on the 'Manage Files' page
 	Then I should see "Doc1"
 	When I follow "Doc1"
 	And I confirm popup

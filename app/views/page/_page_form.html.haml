@@ -1,23 +1,29 @@
-= form_for page, url: {action: page_method} do |form|
-  = form.label :title, 'Title:'
-  = form.text_field :title
+= form_for page, url: {action: page_method} do |page|
+  = page.label :title, 'Title:'
+  = page.text_field :title
   %br
-  = form.label :path, 'Path:'
-  = form.text_field :path
+  = page.label :path, 'Path:'
+  = page.text_field :path
   %br
-  = form.label :content, 'Content:'
-  = form.cktext_area :content, :ckeditor => {:toolbar=>'Full', :width=>'400px', :height=>'200px'}
+  = page.label :content, 'Content:'
+  = page.cktext_area :content, :ckeditor => {:toolbar=>'Full', :width=>'400px', :height=>'200px'}
   %br
-  = form.label :content_type, 'Content Type:'
-  = form.text_field :content_type
+  = page.label :content_type, 'Content Type:'
+  = page.text_field :content_type
   %br
-  = form.label :description, 'Description:'
-  = form.text_field :description
+  = page.label :description, 'Description:'
+  = page.text_field :description
   %br
-  = form.label :published, 'Published:'
-  = form.check_box :published
+  = page.label :published, 'Published:'
+  = page.check_box :published
   %br
-  = form.submit
+  - if params[:page_type] == 'petition'
+    = page.fields_for :petition do |petition|
+      = petition.label :name, 'Petition Name:'
+      = petition.text_field :name
+    %br
+
+  = page.submit
 = link_to 'Cancel', page_index_path
 - if ! page.new_record?
   = button_to "Delete page", page, :confirm => 'Are you sure?', :method => :delete

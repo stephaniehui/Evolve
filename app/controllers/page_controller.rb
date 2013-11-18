@@ -8,12 +8,18 @@ class PageController < ActionController::Base
 
   def new
     @page = Page.new(params[:page])
+    if params[:page_type] == 'petition'
+      @page.build_petition
+    end
   end
 
   def edit
     @page = Page.find(params['id'])
     if params[:page]
       @page.assign_attributes(params[:page])
+    end
+    if params[:page][:petition]
+      @page.form.assign_attributes(params[:page][:petition])
     end
   end
 

@@ -17,7 +17,7 @@
   = page.label :published, 'Published:'
   = page.check_box :published
   %br
-  - if params[:page_type] == 'petition'
+  - if @page.petition
     = page.fields_for :petition do |petition|
       = petition.label :name, 'Petition Name:'
       = petition.text_field :name

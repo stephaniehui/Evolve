@@ -2,4 +2,5 @@
   = form_for @supporter do |form|
     = form.label :email, "Email:"
     = form.text_field :email
+    = form.hidden_field :petition_id
     = form.submit "Sign Petition"

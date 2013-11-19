@@ -1,5 +1,5 @@
 class Page < ActiveRecord::Base
-  has_one :petition
+  has_one :petition, :dependent => :destroy
   has_many :supporters, through: :petition
   accepts_nested_attributes_for :petition
   attr_accessible :path, :title, :published, :content, :content_type, :description, :petition_attributes

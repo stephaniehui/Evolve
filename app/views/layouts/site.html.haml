@@ -9,11 +9,13 @@
     = stylesheet_link_tag 'jquery-ui-1.8.16.custom.css'
     = javascript_include_tag 'application'
 
-    = render 'page/meta'
+    = render 'pages/meta'
 
   %body
-    = render 'page/header'
+    = render 'pages/header'
     .width_container
       #middle
         = raw @page.content
-    = render 'page/footer'
+    - if @page.petition
+      = render 'pages/petition'
+    = render 'pages/footer'

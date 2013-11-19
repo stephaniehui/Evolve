@@ -1,4 +1,4 @@
-function ck_load(){$(".ckeditor").each(function(){CKEDITOR.replace($(this).attr("name"))})}(function(){("undefined"==typeof window.CKEDITOR_BASEPATH||null===window.CKEDITOR_BASEPATH)&&(window.CKEDITOR_BASEPATH="/assets/ckeditor/")}).call(this),$(document).on("page:load",ck_load),/*
+function ck_load(){$(".ckeditor").each(function(){CKEDITOR.replace($(this).attr("name"))})}(function(){("undefined"==typeof window.CKEDITOR_BASEPATH||null===window.CKEDITOR_BASEPATH)&&(window.CKEDITOR_BASEPATH="/assets/ckeditor/")}).call(this),$(document).on("pages:load",ck_load),/*
 Copyright (c) 2003-2013, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */

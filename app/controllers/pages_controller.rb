@@ -1,4 +1,4 @@
-class PageController < ActionController::Base
+class PagesController < ActionController::Base
   before_filter :authenticate_user!, :except => [:show]
   layout :resolve_layout
 
@@ -14,12 +14,12 @@ class PageController < ActionController::Base
   end
 
   def edit
-    @page = Page.find(params['id'])
+    @page = Page.find(params[:id])
     if params[:page]
       @page.assign_attributes(params[:page])
-    end
-    if params[:page][:petition]
-      @page.form.assign_attributes(params[:page][:petition])
+      if params[:page][:petition]
+        @page.form.assign_attributes(params[:page][:petition])
+      end
     end
   end
 
@@ -37,6 +37,9 @@ class PageController < ActionController::Base
 
   def show
     @page = Page.find(params['id'])
+    if @page.petition
+      @supporter = Supporter.new(:petition_id => @page.petition.id)
+    end
     if @page.published?
       render 'layouts/site'
     else

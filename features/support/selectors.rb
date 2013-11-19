@@ -13,7 +13,7 @@ module HtmlSelectorsHelpers
   def selector_for(locator)
     case locator
 
-    when "the page"
+    when "the pages"
       "html > body"
 
     # Add more mappings here.

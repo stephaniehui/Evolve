@@ -3,7 +3,7 @@ FactoryGirl.define do
   sequence(:seq_content) {|n| "<p>#{n}</p>"}
   sequence(:seq_path) {|n| "/#{n}"}
 
-  factory :page do
+  factory :pages do
     trait :static_title do
       title 'New Page'
     end

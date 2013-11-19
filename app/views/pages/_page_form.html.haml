@@ -24,6 +24,6 @@
     %br
 
   = page.submit
-= link_to 'Cancel', page_index_path
+= link_to 'Cancel', pages_path
 - if ! page.new_record?
-  = button_to "Delete page", page, :confirm => 'Are you sure?', :method => :delete
+  = button_to "Delete pages", page, :confirm => 'Are you sure?', :method => :delete

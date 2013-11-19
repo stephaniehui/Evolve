@@ -70,3 +70,7 @@ end
 Then(/^"(.*?)" should contain "(.*?)"$/) do |field, labeltext|
     find_field(field).value.should == labeltext
 end
+
+Then /^I should receive a download with the filename "([^\"]*)"$/ do |filename|
+    page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")
+end

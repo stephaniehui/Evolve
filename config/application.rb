@@ -66,5 +66,8 @@ module Evolve
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    #Adding a line for asset pipeline compatibility
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
   end
 end

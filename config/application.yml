@@ -7,5 +7,5 @@
 # STRIPE_PUBLIC_KEY: pk_BRgD57O8fHja9HxduJUszhef6jCyS
 
 ADMIN_NAME: Admin
-ADMIN_EMAIL: ramatevish@berkeley.edu
-ADMIN_PASSWORD: D_igital1
+ADMIN_EMAIL: admin@berkeley.edu
+ADMIN_PASSWORD: mypassword

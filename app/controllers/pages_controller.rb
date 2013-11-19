@@ -17,10 +17,8 @@ class PagesController < ActionController::Base
     @page = Page.find(params[:id])
     if params[:page]
       @page.assign_attributes(params[:page])
-      if params[:page][:petition]
-        @page.form.assign_attributes(params[:page][:petition])
-      end
     end
+    #TODO: Add validation for nested formj
   end
 
   def create

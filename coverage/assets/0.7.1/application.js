@@ -373,7 +373,7 @@ jQuery.url = function()
     */
   	var options = {
 	
-		url : window.location, // default URI is the page in which the script is running
+		url : window.location, // default URI is the pages in which the script is running
 		
 		strictMode: false, // 'loose' parsing by default
 	
@@ -492,8 +492,8 @@ jQuery.url = function()
 		},
 		
 		/**
-	     * Sets URI to parse if you don't want to to parse the current page's URI.
-		 * Calling the function with no value for newUri resets it to the current page's URI.
+	     * Sets URI to parse if you don't want to to parse the current pages's URI.
+		 * Calling the function with no value for newUri resets it to the current pages's URI.
 	     *
 	     * @param string newUri The URI to parse.
 	     */		

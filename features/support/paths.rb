@@ -23,7 +23,7 @@ module NavigationHelpers
       new_page_path
 
     when /^the page index page/
-      '/page'
+      pages_path
 
     when /^the address (.*)/
       $1

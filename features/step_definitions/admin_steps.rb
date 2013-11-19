@@ -15,10 +15,10 @@ When /I (un)?check the following pages: (.*)/ do |uncheck, pages_list|
 end
 
 Then /(.*) should have attribute (.*)/ do |pagename, attribute|
-  # Make sure that the given page has the given attribute
+  # Make sure that the given pages has the given attribute
   if attribute == "private"
 
-  # Make sure that the given page has been removed from the database
+  # Make sure that the given pages has been removed from the database
   elsif attribute == "deleted"
 
   end

@@ -1,0 +1,21 @@
+= javascript_include_tag 'ckeditor/ckeditor.js'
+= form_for @page, url: {action: "create"} do |form|
+  = form.label :title, 'Title:'
+  = form.text_field :title
+  %br
+  = form.label :path, 'Path:'
+  = form.text_field :path
+  %br
+  = form.label :content, 'Content:'
+  = form.cktext_area :content, :ckeditor => {:toolbar=>'Full', :width=>'400px', :height=>'200px'}
+  %br
+  = form.label :content_type, 'Content Type:'
+  = form.text_field :content_type
+  %br
+  = form.label :description, 'Description:'
+  = form.text_field :description
+  %br
+  = form.label :published, 'Published:'
+  = form.check_box :published
+  %br
+  = form.submit 'Create Page'

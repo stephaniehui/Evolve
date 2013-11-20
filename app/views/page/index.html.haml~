@@ -1,0 +1,17 @@
+= render 'page/partials/notification'
+%h1 Pages
+%table
+  %tr.header
+    %td Id
+    %td Title
+    %td Path
+    %td Created At
+    %td Updated At
+  - @pages.each do |page|
+    %tr
+      %td #{page.id}
+      %td #{page.title}
+      %td #{page.path}
+      %td #{page.created_at}
+      %td #{page.updated_at}
+      %td= link_to "Edit Page", edit_page_path(page)

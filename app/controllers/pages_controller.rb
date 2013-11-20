@@ -3,7 +3,7 @@ class PagesController < ActionController::Base
   layout :resolve_layout
 
   def index
-    @pages = Page.all()
+    @pages = Page.all
   end
 
   def new

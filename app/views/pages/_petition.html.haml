@@ -1,3 +1,7 @@
+- if flash[:supporter_validation_errors]
+  %p.validation The following error#{'s' unless flash[:supporter_validation_errors].size == 1} occurred:
+  - flash[:supporter_validation_errors].each do |message|
+    %li #{message}
 %div.petition
   = form_for @supporter do |form|
     = form.label :email, "Email:"

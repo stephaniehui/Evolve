@@ -50,6 +50,10 @@ Given /^I am a new, authenticated user$/ do
   click_button "Sign in"
 end
 
+Given /^I log out$/ do
+  visit destroy_user_session_path
+end
+
 Then(/^"(.*?)" should not be published$/) do |arg1|
   pending # express the regexp above with the code you wish you had
 end

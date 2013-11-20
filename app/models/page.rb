@@ -5,4 +5,12 @@ class Page < ActiveRecord::Base
   attr_accessible :path, :title, :published, :content, :content_type, :description, :petition_attributes
   validates :path, presence: true, uniqueness: true
   validates :title, presence: true
+
+  def type
+    if self.petition
+      :petition
+    else
+      :static
+    end
+  end
 end

@@ -1,6 +1,7 @@
 %h1 Pages
 %table#page
   %tr.header
+    %td Type
     %td Title
     %td Path
     %td Created At
@@ -9,6 +10,7 @@
     %td Edit Page
   - @pages.each do |page|
     %tr{:id => "page-#{page.id}"}
+      %td #{page.type}
       %td #{page.title}
       %td #{page.path}
       %td #{page.created_at}

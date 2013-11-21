@@ -13,7 +13,7 @@ gem 'meta_search', '>= 1.1.0.pre'
 # for Heroku deployment - as described in Ap. A of ELLS book
 group :development, :test do
   gem 'sqlite3'
-  gem 'ruby-debug19'
+  gem 'debugger'
 end
 
 group :test do
@@ -38,7 +38,7 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'therubyracer', '~> 0.12.0'
+  gem 'therubyracer', '~> 0.12.0', :platform => :ruby
   gem 'sass-rails', '~> 3.2.6'
   gem 'coffee-rails', '~> 3.2.2'
   gem 'haml-rails', '~> 0.4'

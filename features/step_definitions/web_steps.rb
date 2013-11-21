@@ -67,6 +67,18 @@ When /^(?:|I )fill in "([^"]*)" for "([^"]*)"$/ do |value, field|
   fill_in(field, :with => value)
 end
 
+When /^(?:|I )select "([^\"]*)" as the "([^\"]*)" date$/ do |date_str, date_label|
+
+  date = Time.iso8601(date_str)
+
+  select date.year, :from => "#{date_label}_1i"
+  select Date::MONTHNAMES[date.month], :from => "#{date_label}_2i"
+  select date.day.to_s, :from => "#{date_label}_3i"
+  select date.hour.to_s, :from => "#{date_label}_4i"
+  select date.min.to_s, :from => "#{date_label}_5i"
+end
+
+
 # Use this to fill in an entire form with data from a table. Example:
 #
 #   When I fill in the following:

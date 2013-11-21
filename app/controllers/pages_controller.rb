@@ -10,6 +10,8 @@ class PagesController < ActionController::Base
     @page = Page.new(params[:page])
     if params[:page_type] == 'petition'
       @page.build_petition
+    elsif params[:page_type] == 'event'
+      @page.build_event
     end
   end
 
@@ -18,7 +20,6 @@ class PagesController < ActionController::Base
     if params[:page]
       @page.assign_attributes(params[:page])
     end
-    #TODO: Add validation for nested formj
   end
 
   def create
@@ -36,8 +37,13 @@ class PagesController < ActionController::Base
   def show
     @page = Page.find(params['id'])
     if @page.petition
-      @supporter = Supporter.new(:petition_id => @page.petition.id)
+      @supportable = @page.petition
+      @supporter = Supporter.new(:supportable_id =>@supportable.id, :supportable_type => :petition)
+    elsif @page.event
+      @supportable = @page.event
+      @supporter = Supporter.new(:supportable_id => @supportable.id, :supportable_type => :event)
     end
+
     if @page.published?
       render 'layouts/site'
     else

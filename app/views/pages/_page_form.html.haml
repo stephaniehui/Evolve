@@ -17,11 +17,24 @@
   = page.label :published, 'Published:'
   = page.check_box :published
   %br
+
   - if @page.petition
     = page.fields_for :petition do |petition|
       = petition.label :name, 'Petition Name:'
       = petition.text_field :name
-    %br
+      %br
+
+  - if @page.event
+    = page.fields_for :event do |event|
+      = event.label :name, 'Event Name:'
+      = event.text_field :name
+      %br
+      = event.label :date, 'Event Date:'
+      = event.datetime_select :date
+      %br
+      = event.label :location, 'Event Address:'
+      = event.text_field :location
+      %br
 
   = page.submit
 = link_to 'Cancel', pages_path

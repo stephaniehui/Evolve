@@ -2,7 +2,8 @@ Evolve::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
 
   devise_for :users
-  resources :users, :page, :dashboard
+  resources :users, :page
+  resources :dashboard, :only => [:index]
 
   # a kludge to work initial pages table creation issues
   if ActiveRecord::Base.connection.tables.include?('pages')

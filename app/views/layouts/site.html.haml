@@ -17,6 +17,6 @@
     .width_container
       #middle
         = raw @page.content
-    - if @page.petition
-      = render 'pages/petition'
+    - if @page.is_action?
+      = render 'pages/action'
     = render 'pages/footer'

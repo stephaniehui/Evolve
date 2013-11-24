@@ -37,8 +37,6 @@ GEM
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
     bcrypt-ruby (3.1.2)
-    bootstrap-sass (2.3.2.0)
-      sass (~> 3.2)
     builder (3.0.4)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -230,7 +228,6 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk
-  bootstrap-sass (= 2.3.2.0)
   capybara
   ckeditor
   coffee-rails (~> 3.2.2)

@@ -6,7 +6,7 @@ gem 'figaro'
 gem 'ckeditor'
 gem 'paperclip'
 gem 'aws-sdk'
-gem 'bootstrap-sass', '2.3.2.0'
+gem 'bootstrap-sass'
 
 # for Heroku deployment - as described in Ap. A of ELLS book
 group :development, :test do

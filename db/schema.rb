@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131114043239) do
+ActiveRecord::Schema.define(:version => 20131120220639) do
 
   create_table "ckeditor_assets", :force => true do |t|
     t.string   "data_file_name",                  :null => false
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(:version => 20131114043239) do
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
+
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.datetime "date"
+    t.string   "location"
+    t.integer  "page_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "pages", :force => true do |t|
     t.string   "path"
@@ -50,9 +59,10 @@ ActiveRecord::Schema.define(:version => 20131114043239) do
 
   create_table "supporters", :force => true do |t|
     t.string   "email"
-    t.integer  "petition_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "supportable_id"
+    t.string   "supportable_type"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -68,7 +78,7 @@ ActiveRecord::Schema.define(:version => 20131114043239) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.string   "name"                    :default => "", :null => false
+    t.string   "name"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

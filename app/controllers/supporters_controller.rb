@@ -7,7 +7,7 @@ class SupportersController < ActionController::Base
     else
       flash[:warning] = "You failed to sign the petition."
       flash[:supporter_validation_errors] = supporter.errors.full_messages
-      redirect_to :controller => :pages, :action => :show, :id => supporter.petition.page.id
+      redirect_to :back
     end
   end
 end

@@ -4,7 +4,7 @@ class CreatePages < ActiveRecord::Migration
       t.string :path
       t.string :title
       t.boolean :published
-      t.string :content
+      t.text :content
 
       t.timestamps
     end

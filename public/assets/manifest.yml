@@ -39,8 +39,8 @@ ckeditor/build-config.js: ckeditor/build-config-3bcc5f9cd3dd233796df4a513f583ca1
 ckeditor/build-config/index.js: ckeditor/build-config-3bcc5f9cd3dd233796df4a513f583ca1.js
 ckeditor/ckeditor.js: ckeditor/ckeditor-eca0208821dd80839eb3206ca9a3a85e.js
 ckeditor/ckeditor/index.js: ckeditor/ckeditor-eca0208821dd80839eb3206ca9a3a85e.js
-ckeditor/config.js: ckeditor/config-f1520a263391cc2d2b43cdda32fa649c.js
-ckeditor/config/index.js: ckeditor/config-f1520a263391cc2d2b43cdda32fa649c.js
+ckeditor/config.js: ckeditor/config-4640c345958f956b0a276b6817b6f712.js
+ckeditor/config/index.js: ckeditor/config-4640c345958f956b0a276b6817b6f712.js
 ckeditor/contents.css: ckeditor/contents-ad9ec2bd3a3ab582cfefb18c78ea9320.css
 ckeditor/contents/index.css: ckeditor/contents-ad9ec2bd3a3ab582cfefb18c78ea9320.css
 ckeditor/lang/af.js: ckeditor/lang/af-6d94950ea6e20b04226c20373e3ae864.js

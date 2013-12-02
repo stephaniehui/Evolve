@@ -1,4 +1,4 @@
-Feature: Administrators should be create and delete petitions
+Feature: Administrators should be create and delete events
 
   As an administrator of the website
   So I can notify supporters about events
@@ -22,7 +22,7 @@ Feature: Administrators should be create and delete petitions
     Then I should be on the page index page
       And I should see "Successfully created event Event 1"
 
-  Scenario: (Sad path) If petition creation fails I am warned
+  Scenario: (Sad path) If event creation fails I am warned
     When I am on the page index page
       And I follow "Event"
     When I fill in "Title" with "Event 1"
@@ -41,6 +41,6 @@ Feature: Administrators should be create and delete petitions
       And I fill in "Event Address:" with "2714 Durant Ave, Berkeley CA"
       And I press "Create Page"
     Then I should be on the page creation page
-      And I should see "Failed to create event Event1"
+      And I should see "Failed to create event"
       And I should see "The following error occurred:"
       And I should see "Event name has already been taken"

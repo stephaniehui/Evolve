@@ -1,9 +1,9 @@
 Evolve::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => :registrations }, :skip => []
 
-  resources :users, :pages
+  resources :pages, :users
   resources :supporters, only: [:create]
   resources :dashboard, :only => [:index]
 

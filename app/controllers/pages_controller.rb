@@ -25,10 +25,10 @@ class PagesController < ActionController::Base
   def create
     page = Page.create(params[:page])
     if page.valid?
-      flash[:notice] = "Successfully created page #{page.title}"
+      flash[:success] = "Successfully created #{page.type_string.downcase} #{page.title}"
       redirect_to :action => :index
     else
-      flash[:warning] = "Failed to create page."
+      flash[:warning] = "Failed to create #{page.type_string.downcase} #{page.title}"
       flash[:page_validation_errors] = page.errors.full_messages
       redirect_to :action => :new, :params => params
     end
@@ -55,10 +55,10 @@ class PagesController < ActionController::Base
     @page = Page.find(params['id'])
     @page.update_attributes(params[:page])
     if @page.valid?
-      flash[:notice] = "Successfully updated page '#{@page.title}'"
+      flash[:success] = "Successfully updated #{@page.type_string.downcase} '#{@page.title}'"
       redirect_to :action => :index
     else
-      flash[:warning] = "Failed to update page."
+      flash[:warning] = "Failed to update #{@page.type_string.downcase}."
       flash[:page_validation_errors] = @page.errors.full_messages
       redirect_to :action => :edit, :params => params
     end
@@ -67,7 +67,7 @@ class PagesController < ActionController::Base
   def destroy
     @page = Page.find(params['id'])
     @page.destroy
-    flash[:notice] = "Page '#{@page.title}' was deleted."
+    flash[:success] = "#{@page.type_string} '#{@page.title}' was deleted."
     redirect_to :action => :index
   end
 

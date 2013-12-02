@@ -18,7 +18,7 @@ Feature: Administrators should be create and delete events
       And I fill in "Event Name:" with "Event 1"
       And I select "2013-05-02T14:11:00Z" as the "page_event_attributes_date" date
       And I fill in "Event Address:" with "2714 Durant Ave, Berkeley CA"
-    When I press "Create Page"
+    When I press "Create Event"
     Then I should be on the page index page
       And I should see "Successfully created event Event 1"
 
@@ -30,7 +30,7 @@ Feature: Administrators should be create and delete events
       And I fill in "Event Name:" with "Event 1"
       And I select "2013-05-02T14:11:00Z" as the "page_event_attributes_date" date
       And I fill in "Event Address:" with "2714 Durant Ave, Berkeley CA"
-    When I press "Create Page"
+    When I press "Create Event"
     Then I should be on the page index page
       And I should see "Successfully created event Event 1"
     When I follow "Event"
@@ -39,7 +39,7 @@ Feature: Administrators should be create and delete events
       And I fill in "Event Name" with "Event 1"
       And I select "2013-05-02T14:11:00Z" as the "page_event_attributes_date" date
       And I fill in "Event Address:" with "2714 Durant Ave, Berkeley CA"
-      And I press "Create Page"
+      And I press "Create Event"
     Then I should be on the page creation page
       And I should see "Failed to create event"
       And I should see "The following error occurred:"

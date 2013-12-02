@@ -1,4 +1,4 @@
-Feature: website static html pages are viewable by supporters
+Feature: petition pages are viewable and signable by supporters
 
   As a resident of California
   So that I can support certain causes
@@ -16,7 +16,7 @@ Feature: website static html pages are viewable by supporters
       And I fill in "Content:" with "This is a petition"
       And I check "Published"
       And I fill in "Petition Name" with "Petition1"
-    When I press "Create Page"
+    When I press "Create Petition"
     Then I should be on the page index page
     Then I log out
 

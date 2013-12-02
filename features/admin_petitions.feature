@@ -16,7 +16,7 @@ Feature: Administrators should be create and delete petitions
     When I fill in "Title" with "Petition 1"
       And I fill in "Path" with "/pet1"
       And I fill in "Petition Name" with "Petition 1"
-    When I press "Create Page"
+    When I press "Create Petition"
     Then I should be on the page index page
       And I should see "Successfully created petition Petition 1"
 
@@ -26,14 +26,14 @@ Feature: Administrators should be create and delete petitions
     When I fill in "Title" with "Petition 1"
       And I fill in "Path" with "/pet1"
       And I fill in "Petition Name" with "Petition 1"
-    When I press "Create Page"
+    When I press "Create Petition"
     Then I should be on the page index page
       And I should see "Successfully created petition Petition 1"
     When I follow "Petition"
       And I fill in "Title" with "Petition 1"
       And I fill in "Path" with "/pet2"
       And I fill in "Petition Name" with "Petition 1"
-      And I press "Create Page"
+      And I press "Create Petition"
     Then I should be on the page creation page
       And I should see "Failed to create petition"
       And I should see "The following error occurred:"

@@ -1,46 +1,44 @@
-= form_for page, url: {action: page_method}, :html => { :class => "form-horizontal"} do |page|
-  %div.form-group
-    = page.label :title, 'Title:'
-    = page.text_field :title, :class => 'form-control'
-  %div.form-group
-    = page.label :path, 'Path:'
-    = page.text_field :path, :class => 'form-control'
-  %div.form-group
-    = page.label :content, 'Content:'
-    = page.cktext_area :content, :ckeditor => {:toolbar=>'Full', :height=>'400px'}
-  %div.form-group
-    = page.label :content_type, 'Content Type:'
-    = page.text_field :content_type, :class => 'form-control'
-  %div.form-group
-    = page.label :description, 'Description:'
-    = page.text_field :description, :class => 'form-control'
-  %div.form-group
-    = page.label :published, 'Published:'
-    %div.checkbox-inline
-      = page.check_box :published
+%div.container
+  = form_for page, url: {action: page_method}, :html => { :class => "form-horizontal"} do |page|
+    %div.form-group
+      = page.label :title, 'Title:'
+      = page.text_field :title, :class => 'form-control'
+    %div.form-group
+      = page.label :path, 'Path:'
+      = page.text_field :path, :class => 'form-control'
+    %div.form-group
+      = page.label :content, 'Content:'
+      = page.cktext_area :content, :ckeditor => {:toolbar=>'Full', :height=>'400px'}
+    %div.form-group
+      = page.label :content_type, 'Content Type:'
+      = page.text_field :content_type, :class => 'form-control'
+    %div.form-group
+      = page.label :description, 'Description:'
+      = page.text_field :description, :class => 'form-control'
+    %div.form-group
+      = page.label :published, 'Published:'
+      %div.checkbox-inline
+        = page.check_box :published
 
-  - if @page.petition
-    = page.fields_for :petition do |petition|
-      %div.form-group
-        = petition.label :name, 'Petition Name:'
-        = petition.text_field :name, :class => 'form-control'
+    - if @page.petition
+      = page.fields_for :petition do |petition|
+        %div.form-group
+          = petition.label :name, 'Petition Name:'
+          = petition.text_field :name, :class => 'form-control'
 
-  - if @page.event
-    = page.fields_for :event do |event|
-      %div.form-group
-        = event.label :name, 'Event Name:'
-        = event.text_field :name, :class => 'form-control'
-      %div.form-group
-        = event.label :date, 'Event Date:'
-        = event.datetime_select :date
-      %div.form-group
-        = event.label :location, 'Event Address:'
-        = event.text_field :location, :class => 'form-control'
-  %div{:class => 'pull-left'}
-    = page.submit :class => 'btn btn-default'
-%form{:action => pages_path}
-  %button{:class => 'btn btn-default pull-left'} Cancel
-- if ! page.new_record?
-  = button_to "Delete #{@page.type_string}", page, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger'
-%div.clearfix
-%br
+    - if @page.event
+      = page.fields_for :event do |event|
+        %div.form-group
+          = event.label :name, 'Event Name:'
+          = event.text_field :name, :class => 'form-control'
+        %div.form-group
+          = event.label :date, 'Event Date:'
+          = event.datetime_select :date
+        %div.form-group
+          = event.label :location, 'Event Address:'
+          = event.text_field :location, :class => 'form-control'
+    %div{:class => 'pull-left'}
+      = page.submit :class => 'btn btn-primary', :value => "#{@page.new_record? ? 'Create' : 'Update'} #{@page.type_string}"
+  %form{:action => pages_path}
+    %button{:class => 'btn btn-default pull-left'} Cancel
+  %div.clearfix

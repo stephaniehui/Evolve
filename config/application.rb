@@ -67,6 +67,15 @@ module Evolve
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-    
+
+    # Setup layouts for Devise
+    config.to_prepare do
+      Devise::SessionsController.layout 'layouts/admin'
+      Devise::RegistrationsController.layout 'layouts/admin'
+      Devise::ConfirmationsController.layout 'layouts/admin'
+      Devise::UnlocksController.layout 'layouts/admin'
+      Devise::PasswordsController.layout 'layouts/admin'
+    end
   end
 end
+

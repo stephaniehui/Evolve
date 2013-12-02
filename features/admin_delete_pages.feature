@@ -16,7 +16,7 @@ Background: A page exists that the admin wants to delete
 Scenario: The admin can delete a page
   When I am on the page index page
     And I follow "Edit Blog2"
-  When I press "Delete page"
+  When I press "Delete Page"
     And I confirm popup
   Then I should be on the page index page
     And I should see "Page 'Blog2' was deleted."

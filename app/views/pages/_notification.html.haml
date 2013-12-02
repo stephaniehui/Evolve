@@ -6,5 +6,5 @@
   %p{:class => "alert alert-info"} #{flash[:info]}
 - if flash[:danger]
   %p{:class => "alert alert-danger"} #{flash[:danger]}
-- if flash[:notice]
-  %p.notice #{flash[:notice]}
+- if flash[:notice] # TODO: phase this out
+  %p{:class => "alert alert-info"} #{flash[:notice]}

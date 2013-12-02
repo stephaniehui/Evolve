@@ -7,7 +7,7 @@
     = page.text_field :path, :class => 'form-control'
   %div.form-group
     = page.label :content, 'Content:'
-    = page.cktext_area :content, :ckeditor => {:toolbar=>'Full', :width=>'400px', :height=>'200px'}
+    = page.cktext_area :content, :ckeditor => {:toolbar=>'Full', :height=>'400px'}
   %div.form-group
     = page.label :content_type, 'Content Type:'
     = page.text_field :content_type, :class => 'form-control'
@@ -36,8 +36,11 @@
       %div.form-group
         = event.label :location, 'Event Address:'
         = event.text_field :location, :class => 'form-control'
-
-  = page.submit
-= link_to 'Cancel', pages_path
+  %div{:class => 'pull-left'}
+    = page.submit :class => 'btn btn-default'
+%form{:action => pages_path}
+  %button{:class => 'btn btn-default pull-left'} Cancel
 - if ! page.new_record?
-  = button_to "Delete pages", page, :confirm => 'Are you sure?', :method => :delete
+  = button_to "Delete #{@page.type_string}", page, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger'
+%div.clearfix
+%br

@@ -1,6 +1,6 @@
 = stylesheet_link_tag 'application'
 = javascript_include_tag 'ckeditor/ckeditor.js'
 
-%h1{:class => "center"} Edit Article
+%h1.page-header Edit Page
 = render 'validation'
 = render partial: 'page_form', :class => "center", locals: {page: @page, page_method: 'update'}

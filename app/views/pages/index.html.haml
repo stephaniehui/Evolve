@@ -1,15 +1,13 @@
-= render partial: 'shared/panel'
-
-%h1 Pages
-%table#page
-  %tr.header
-    %td Type
-    %td Title
-    %td Path
-    %td Created At
-    %td Updated At
-    %td View Page
-    %td Edit Page
+%h1.page-header Pages
+%table#page{:class => "table table-hover"}
+  %tr
+    %th Type
+    %th Title
+    %th Path
+    %th Created At
+    %th Updated At
+    %th View Page
+    %th Edit Page
   - @pages.each do |page|
     %tr{:id => "page-#{page.id}"}
       %td #{page.type}
@@ -20,7 +18,8 @@
       %td= link_to "View #{page.title}", page_path(page.id)
       %td= link_to "Edit #{page.title}", edit_page_path(page.id)
 
-= link_to 'Add new page', new_page_path
-= link_to 'Add new petition', new_page_path(:page_type => :petition)
-= link_to 'Add new event', new_page_path(:page_type => :event)
+%div.btn-group
+  = link_to 'Add new page', new_page_path
+  = link_to 'Add new petition', new_page_path(:page_type => :petition)
+  = link_to 'Add new event', new_page_path(:page_type => :event)
 

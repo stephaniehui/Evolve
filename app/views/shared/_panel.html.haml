@@ -1,7 +1,15 @@
-= link_to 'Dashboard', dashboard_index_path
-= link_to 'Manage Pages', pages_path
-= link_to 'Manage Users', users_path
-= link_to 'Manage Files'
-= link_to 'Link to Active Site', '/'
-= link_to 'Edit Account', edit_user_registration_path
-= link_to 'Logout', destroy_user_session_path
+%ul{:class => "nav nav-tabs"}
+  %li
+    = link_to 'Dashboard', dashboard_index_path
+  %li
+    = link_to 'Pages', pages_path
+  %li
+    = link_to 'Users', users_path
+  %li
+    = link_to 'Files'
+  %li
+    = link_to 'Site', '/'
+  %li
+    = link_to 'Edit Account', edit_user_registration_path
+  %li
+    = link_to 'Logout', destroy_user_session_path

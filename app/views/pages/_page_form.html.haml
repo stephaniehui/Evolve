@@ -1,40 +1,41 @@
-= form_for page, url: {action: page_method} do |page|
-  = page.label :title, 'Title:'
-  = page.text_field :title
-  %br
-  = page.label :path, 'Path:'
-  = page.text_field :path
-  %br
-  = page.label :content, 'Content:'
-  = page.cktext_area :content, :ckeditor => {:toolbar=>'Full', :width=>'400px', :height=>'200px'}
-  %br
-  = page.label :content_type, 'Content Type:'
-  = page.text_field :content_type
-  %br
-  = page.label :description, 'Description:'
-  = page.text_field :description
-  %br
-  = page.label :published, 'Published:'
-  = page.check_box :published
-  %br
+= form_for page, url: {action: page_method}, :html => { :class => "form-horizontal"} do |page|
+  %div.form-group
+    = page.label :title, 'Title:'
+    = page.text_field :title, :class => 'form-control'
+  %div.form-group
+    = page.label :path, 'Path:'
+    = page.text_field :path, :class => 'form-control'
+  %div.form-group
+    = page.label :content, 'Content:'
+    = page.cktext_area :content, :ckeditor => {:toolbar=>'Full', :width=>'400px', :height=>'200px'}
+  %div.form-group
+    = page.label :content_type, 'Content Type:'
+    = page.text_field :content_type, :class => 'form-control'
+  %div.form-group
+    = page.label :description, 'Description:'
+    = page.text_field :description, :class => 'form-control'
+  %div.form-group
+    = page.label :published, 'Published:'
+    %div.checkbox-inline
+      = page.check_box :published
 
   - if @page.petition
     = page.fields_for :petition do |petition|
-      = petition.label :name, 'Petition Name:'
-      = petition.text_field :name
-      %br
+      %div.form-group
+        = petition.label :name, 'Petition Name:'
+        = petition.text_field :name, :class => 'form-control'
 
   - if @page.event
     = page.fields_for :event do |event|
-      = event.label :name, 'Event Name:'
-      = event.text_field :name
-      %br
-      = event.label :date, 'Event Date:'
-      = event.datetime_select :date
-      %br
-      = event.label :location, 'Event Address:'
-      = event.text_field :location
-      %br
+      %div.form-group
+        = event.label :name, 'Event Name:'
+        = event.text_field :name, :class => 'form-control'
+      %div.form-group
+        = event.label :date, 'Event Date:'
+        = event.datetime_select :date
+      %div.form-group
+        = event.label :location, 'Event Address:'
+        = event.text_field :location, :class => 'form-control'
 
   = page.submit
 = link_to 'Cancel', pages_path

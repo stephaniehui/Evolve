@@ -1,7 +1,5 @@
 = javascript_include_tag 'ckeditor/ckeditor.js'
-= render partial: 'shared/panel'
 = render 'validation'
-= render partial: 'page_form', locals: {page: @page, page_method: 'create'}
 
-- if params[:map]
-  = render 'map'
+%h1.page-header Create Page
+= render partial: 'page_form', locals: {page: @page, page_method: 'create'}

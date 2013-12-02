@@ -1,4 +1,10 @@
+- if flash[:success]
+  %p{:class => "alert alert-success"} #{flash[:success]}
 - if flash[:warning]
-  %p.warning #{flash[:warning]}
+  %p{:class => "alert alert-warning"} #{flash[:warning]}
+- if flash[:info]
+  %p{:class => "alert alert-info"} #{flash[:info]}
+- if flash[:danger]
+  %p{:class => "alert alert-danger"} #{flash[:danger]}
 - if flash[:notice]
   %p.notice #{flash[:notice]}

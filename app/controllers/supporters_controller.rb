@@ -3,6 +3,7 @@ class SupportersController < ActionController::Base
     supporter = Supporter.create(params[:supporter])
     if supporter.valid?
       flash[:notice] = "You have successfully signed the petition"
+	  SupporterMailer.petition_email(supporter).deliver
       redirect_to :back
     else
       flash[:warning] = "You failed to sign the petition."

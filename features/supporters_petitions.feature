@@ -10,7 +10,7 @@ Feature: website static html pages are viewable by supporters
       | Evolve!                 | /         | <p>Evolve!</p>    | true      |
     Given I am a new, authenticated user
     When I am on the page index page
-      And I follow "Add new petition"
+      And I follow "Petition"
     When I fill in "Title" with "Petition1"
       And I fill in "Path" with "/pet1"
       And I fill in "Content:" with "This is a petition"

@@ -12,7 +12,7 @@ Feature: Administrators should be create and delete petitions
 
   Scenario: If I am logged in I can create a new event
     When I am on the page index page
-      And I follow "Add new event"
+      And I follow "Event"
     When I fill in "Title" with "Event 1"
       And I fill in "Path" with "/event1"
       And I fill in "Event Name:" with "Event 1"
@@ -24,7 +24,7 @@ Feature: Administrators should be create and delete petitions
 
   Scenario: (Sad path) If petition creation fails I am warned
     When I am on the page index page
-      And I follow "Add new event"
+      And I follow "Event"
     When I fill in "Title" with "Event 1"
       And I fill in "Path" with "/event1"
       And I fill in "Event Name:" with "Event 1"
@@ -33,7 +33,7 @@ Feature: Administrators should be create and delete petitions
     When I press "Create Page"
     Then I should be on the page index page
       And I should see "Successfully created page Event 1"
-    When I follow "Add new event"
+    When I follow "Event"
       And I fill in "Title" with "Event 2"
       And I fill in "Path" with "/event2"
       And I fill in "Event Name" with "Event 1"

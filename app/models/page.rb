@@ -21,4 +21,12 @@ class Page < ActiveRecord::Base
   def is_action?
     self.type != :static
   end
+
+  def type_string
+    type = self.type
+    if type == :static
+      type = :page
+    end
+    type.capitalize.to_s
+  end
 end

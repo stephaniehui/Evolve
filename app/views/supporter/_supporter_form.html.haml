@@ -1,0 +1,22 @@
+%div.container
+  = form_for supporter, url: :post, :html => { :class => "form-horizontal"} do |supporter|
+    %div.form-group
+      = supporter.label :name_first, 'First Name:'
+      = supporter.text_field :name_first, :class => 'form-control'
+      = page.label :name_last, 'Last Name:'
+      = page.text_field :name_last, :class => 'form-control'
+    %div.form-group
+      = page.label :content, 'Content:'
+      = page.cktext_area :content, :ckeditor => {:toolbar=>'Full', :height=>'400px'}
+    %div.form-group
+      = page.label :content_type, 'Content Type:'
+      = page.text_field :content_type, :class => 'form-control'
+    %div.form-group
+      = page.label :description, 'Description:'
+      = page.text_field :description, :class => 'form-control'
+    %div.form-group
+      = page.label :published, 'Published:'
+      %div.checkbox-inline
+        = page.check_box :published
+    %div{:class => 'pull-left'}
+      = page.submit :class => 'btn btn-primary'

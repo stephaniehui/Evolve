@@ -45,7 +45,7 @@ class PagesController < ActionController::Base
     end
 
     if @page.published?
-      render 'layouts/site'
+      render 'pages/_content'
     else
       redirect_to :error_404_path
     end

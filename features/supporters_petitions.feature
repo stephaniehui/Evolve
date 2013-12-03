@@ -27,7 +27,7 @@ Feature: petition pages are viewable and signable by supporters
     When I fill in "Email:" with "derp@derp.com"
     And I press "Sign Petition"
     Then I should be on the page Petition1
-    And I should see "You have successfully signed the petition"
+    And I should see "You successfully signed the petition"
 
   Scenario: (Sad Path) If I enter an improper email I am notified
     When I go to the page Petition1
@@ -36,6 +36,6 @@ Feature: petition pages are viewable and signable by supporters
     When I fill in "Email:" with "derp"
       And I press "Sign Petition"
     Then I should be on the page Petition1
-      And I should see "You failed to sign the petition."
+      And I should see "Failed to sign the petition"
       And I should see "The following error occurred:"
       And I should see "Email is not valid"

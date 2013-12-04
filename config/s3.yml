@@ -1,14 +1,12 @@
 development:
-  bucket: evolve-ca
-  access_key_id: AKIAIOXAGEK4YWOTQBXQ
-  secret_access_key: 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
+  bucket: BUCKET_NAME
+  access_key_id: KEY
+  secret_access_key: KEY
 test:
-  bucket: evolve-ca
-  access_key_id: AKIAIOXAGEK4YWOTQBXQ
-  secret_access_key: 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
+  bucket: BUCKET_NAME
+  access_key_id: KEY
+  secret_access_key: KEY
 production:
-  bucket: evolve-ca
-  access_key_id: AKIAIOXAGEK4YWOTQBXQ
-  secret_access_key: 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
-
-
+  bucket: BUCKET_NAME
+  access_key_id: KEY
+  secret_access_key: KEY

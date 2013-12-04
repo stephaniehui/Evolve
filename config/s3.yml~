@@ -1,14 +1,14 @@
 development:
-  bucket: YOUR_DEVELOPMENT_BUCKET_NAME
-  access_key_id: YOUR_ACCESS_KEY
-  secret_access_key: YOUR_SECRET_ACCESS_KEY
+  bucket: BUCKET_NAME
+  access_key_id: KEY
+  secret_access_key: KEY
 test:
-  bucket: YOUR_TEST_BUCKET_NAME
-  access_key_id: YOUR_ACCESS_KEY
-  secret_access_key: YOUR_SECRET_ACCESS_KEY
+  bucket: BUCKET_NAME
+  access_key_id: KEY
+  secret_access_key: XncM2HoG44q6RH4BCQ8Sv86gpd9PJFM9YORoi6r2
 production:
-  bucket: YOUR_PRODUCTION_BUCKET_NAME
-  access_key_id: YOUR_ACCESS_KEY
-  secret_access_key: YOUR_SECRET_ACCESS_KEY
+  bucket: BUCKET_NAME
+  access_key_id: AKIAIOXAGEK4YWOTQBXQ
+  secret_access_key: XncM2HoG44q6RH4BCQ8Sv86gpd9PJFM9YORoi6r2
 
 

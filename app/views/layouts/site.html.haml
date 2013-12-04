@@ -10,11 +10,9 @@
 
   %body
     = render 'pages/header'
+    = render 'pages/notification'
     %div.container
-      = render 'pages/notification'
-    %div.container
-      #middle
-        = yield
+      = yield
     - if @page.is_action?
       %div.container
         = render 'pages/action'

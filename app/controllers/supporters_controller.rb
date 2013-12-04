@@ -5,7 +5,11 @@ class SupportersController < ActionController::Base
     supporter = Supporter.create(params[:supporter])
     if supporter.valid?
       flash[:success] = supporter.create_success_text
-      redirect_to :back
+      if supporter.supportable_type.to_s == 'Supporter'
+        redirect_to '/'
+      else
+        redirect_to :back
+      end
     else
       flash[:warning] = supporter.create_failure_text
       flash[:supporter_validation_errors] = supporter.errors.full_messages

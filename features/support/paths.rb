@@ -35,6 +35,9 @@ module NavigationHelpers
       page = Page.find_by_title($1)
       edit_page_path(page.id)
 
+    when /^the email sign up page$/
+      new_supporter_path
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

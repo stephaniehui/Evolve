@@ -1,32 +1,33 @@
-%div.container
-  = form_for supporter, :html => { :class => "form-horizontal"} do |supporter|
-    %div.form-group
-      = supporter.label :name_first, 'First Name:'
-      = supporter.text_field :name_first, :class => 'form-control'
-      = supporter.label :name_last, 'Last Name:'
-      = supporter.text_field :name_last, :class => 'form-control'
-    %div.form-group
-      = supporter.label :email, 'Email:'
-      = supporter.text_field :email, :class => 'form-control'
-    %div.form-group
-      = supporter.label :phone_mobile, 'Mobile Phone:'
-      // TODO: better field option, maybe masking
-      = supporter.text_field :phone_mobile, :class => 'form-control'
-    %div.form-group
-      %label.checkbox-inline
-        = supporter.check_box :updates_email
-        Send me email updates
-      %label.checkbox-inline
-        = supporter.check_box :updates_mobile
-        Send me text message updates
-    %div.form-group
-      = supporter.label :address, 'Address (Street, City, State, Postal code)'
-      = supporter.text_field :address, :class => 'form-control'
-    %div.form-group
-      %label.checkbox
-        =supporter.check_box :volunteer
-        I want to volunteer
-    %div.form-group
-      = supporter.hidden_field :supportable_id
-      = supporter.hidden_field :supportable_type
-      = supporter.submit :class => 'btn btn-primary'
+= form_for supporter, :html => { :class => "form-horizontal"} do |supporter|
+  %div.form-group
+    = supporter.label :name_first, 'First Name:'
+    = supporter.text_field :name_first, :class => 'form-control', :autofocus => true
+  %div.form-group
+    = supporter.label :name_last, 'Last Name:'
+    = supporter.text_field :name_last, :class => 'form-control'
+  %div.form-group
+    = supporter.label :email, 'Email:'
+    = supporter.text_field :email, :class => 'form-control'
+  %div.form-group
+    = supporter.label :phone_mobile, 'Mobile Phone:'
+    // TODO: better field option, maybe masking
+    = supporter.text_field :phone_mobile, :class => 'form-control'
+  %div.form-group
+    %label.checkbox-inline
+      = supporter.check_box :updates_email
+      Send me email updates
+    %label.checkbox-inline
+      = supporter.check_box :updates_mobile
+      Send me text message updates
+  %div.form-group
+    = supporter.label :address, 'Address:'
+    %i (Street, City, State, Postal code)
+    = supporter.text_field :address, :class => 'form-control'
+  %div.form-group
+    %label.checkbox
+      =supporter.check_box :volunteer
+      I want to volunteer
+  %div.form-group
+    = supporter.hidden_field :supportable_id
+    = supporter.hidden_field :supportable_type
+    = supporter.submit :class => 'btn btn-primary', :value => 'Sign up'

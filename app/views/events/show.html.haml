@@ -1,0 +1,28 @@
+%h1.page-header= @event.name
+%table
+  %tr
+    %td Name
+    %td= @event.name
+  %tr
+    %td Path
+    %td= link_to @event.page.path, page_path(@event.page.id)
+  %tr
+    %td Time
+    %td= @event.date
+  %tr
+    %td Location
+    %td= @event.location
+  %tr
+    %td Created at
+    %td= @event.created_at
+  %tr
+    %td Updated at
+    %td= @event.updated_at
+  %tr
+    %td Total Supporters
+    %td= @event.supporters.count
+  %tr
+
+%h4.page-header Supporters
+- @event.supporters.each do |supporter|
+  %li #{supporter.email}

@@ -8,7 +8,7 @@ Evolve::Application.routes.draw do
   resources :pages, :users
   resources :supporters, only: [:create, :new]
   resources :petitions, only: [:index, :show]
-  resources :dashboard, :only => [:index]
+  resources :events, only: [:index, :show]
 
 
   # a kludge to work initial pages table creation issues

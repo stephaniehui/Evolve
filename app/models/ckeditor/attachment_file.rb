@@ -7,7 +7,7 @@ class Ckeditor::AttachmentFile < Ckeditor::Asset
 		:storage => :s3,
 		:s3_credentials => "#{Rails.root}/config/s3.yml",
                     :url  => ":s3_domain_url",
-                    :path => ":attachment/:id.:extension",
+                    :path => ":attachment/:id.:extension"
 
   
   validates_attachment_size :data, :less_than => 100.megabytes

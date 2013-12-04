@@ -7,6 +7,8 @@
       = link_to 'Users', users_path
     %li
       = link_to 'Files'
+    %li
+      = link_to 'Petitions', petitions_path
   %ul{:class => 'nav navbar-nav navbar-right'}
     - if current_user
       %li= link_to current_user.name, edit_user_registration_path

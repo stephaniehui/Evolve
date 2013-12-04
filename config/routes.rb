@@ -1,10 +1,13 @@
 Evolve::Application.routes.draw do
+  get "petition/index"
+
   mount Ckeditor::Engine => '/ckeditor'
 
   devise_for :users, :controllers => { :registrations => :registrations }, :skip => []
 
   resources :pages, :users
   resources :supporters, only: [:create, :new]
+  resources :petitions, only: [:index, :show]
   resources :dashboard, :only => [:index]
 
 

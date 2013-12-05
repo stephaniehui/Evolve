@@ -1,5 +1,5 @@
 %div.container
-  = form_for page, url: {action: page_method}, :html => { :class => "form-horizontal"} do |page|
+  = form_for page, url: {action: page_method},  :html => { :multipart => true, :class => "form-horizontal"} do |page|
     %div.form-group
       = page.label :title, 'Title:'
       = page.text_field :title, :class => 'form-control'
@@ -15,6 +15,9 @@
     %div.form-group
       = page.label :description, 'Description:'
       = page.text_field :description, :class => 'form-control'
+    %div.form-group
+      = page.label :file, "Upload File"
+      = page.file_field :file
     %div.form-group
       = page.label :published, 'Published:'
       %div.checkbox-inline

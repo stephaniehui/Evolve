@@ -4,9 +4,14 @@ class Page < ActiveRecord::Base
   has_many :supporters, through: :petition
   has_many :supporters, through: :event
   accepts_nested_attributes_for :petition, :event
-  attr_accessible :path, :title, :published, :content, :content_type, :description, :petition_attributes, :event_attributes
+  attr_accessible :path, :title, :published, :content, :content_type, :description, :petition_attributes, :event_attributes, :file
   validates :path, presence: true, uniqueness: true
   validates :title, presence: true
+  has_attached_file :file,
+		:storage => :s3,
+		:s3_credentials => "#{Rails.root}/config/s3.yml",
+                    :url  => ":s3_domain_url",
+                    :path => ":attachment/:id.:extension"
 
   def type
     if self.petition

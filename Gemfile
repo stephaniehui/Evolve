@@ -6,6 +6,7 @@ gem 'figaro'
 gem 'ckeditor'
 gem 'paperclip'
 gem 'aws-sdk'
+gem 'aws-s3'
 gem 'kaminari'
 
 # for Heroku deployment - as described in Ap. A of ELLS book

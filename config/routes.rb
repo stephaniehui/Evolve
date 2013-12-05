@@ -6,7 +6,7 @@ Evolve::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => :registrations }, :skip => []
 
   resources :pages, :users
-  resources :supporters, only: [:create, :new]
+  resources :supporters, only: [:create, :new, :index, :show]
   resources :petitions, only: [:index, :show]
   resources :events, only: [:index, :show]
 

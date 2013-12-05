@@ -35,4 +35,12 @@ class Supporter < ActiveRecord::Base
     end
   end
 
+  def display_name
+    if self.name_first and self.name_last
+      "#{self.name_first} #{self.name_last}"
+    else
+      self.email
+    end
+  end
+
 end

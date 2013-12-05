@@ -1,5 +1,14 @@
 class SupportersController < ActionController::Base
-  layout 'layouts/site'
+  before_filter :authenticate_user!, :except => [:create, :new]
+  layout :resolve_layout
+
+  def index
+    @supporters = Supporter.all
+  end
+
+  def show
+    @supporter = Supporter.find_by_id(params[:id])
+  end
 
   def create
     supporter = Supporter.create(params[:supporter])
@@ -22,6 +31,19 @@ class SupportersController < ActionController::Base
     @supporter.supportable_id = @supporter.id
     @supporter.supportable_type = 'Supporter'
     @page = Page.new(:title => 'Sign Up')
+  end
+
+  private
+
+  def resolve_layout
+    case action_name
+      when 'create'
+        'layouts/site'
+      when 'new'
+        'layouts/site'
+      else
+        'layouts/admin'
+    end
   end
 
 end

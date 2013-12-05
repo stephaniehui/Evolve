@@ -18,5 +18,7 @@
   %tr
 
 %h4.page-header Supporters
-- @petition.supporters.each do |supporter|
-  %li #{supporter.email}
+%ul
+  - @petition_supporters.each do |supporter|
+    %li= link_to supporter.display_name, supporter
+= paginate @petition_supporters

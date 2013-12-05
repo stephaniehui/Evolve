@@ -24,5 +24,7 @@
   %tr
 
 %h4.page-header Supporters
-- @event.supporters.each do |supporter|
-  %li #{supporter.email}
+%ul
+  - @event_supporters.each do |supporter|
+    %li= link_to supporter.display_name, supporter
+= paginate @event_supporters

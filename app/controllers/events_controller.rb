@@ -8,7 +8,9 @@ class EventsController < ActionController::Base
   end
 
   def show
+    params[:page] ||= 0
     @event = Event.find_by_id(params[:id])
+    @event_supporters = @event.supporters.page(params[:page])
   end
 
 end

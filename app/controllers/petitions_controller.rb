@@ -8,7 +8,9 @@ class PetitionsController < ActionController::Base
   end
 
   def show
+    params[:page] ||= 0
     @petition = Petition.find_by_id(params[:id])
+    @petition_supporters = @petition.supporters.page(params[:page])
   end
 
 end

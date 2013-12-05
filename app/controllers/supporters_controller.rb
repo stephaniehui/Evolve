@@ -3,7 +3,8 @@ class SupportersController < ActionController::Base
   layout :resolve_layout
 
   def index
-    @supporters = Supporter.all
+    params[:page] ||= 0
+    @supporters = Supporter.page params[:page]
   end
 
   def show

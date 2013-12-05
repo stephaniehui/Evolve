@@ -3,7 +3,8 @@ class PetitionsController < ActionController::Base
   layout 'layouts/admin'
 
   def index
-    @petitions = Petition.all
+    params[:page] ||= 0
+    @petitions = Petition.page params[:page]
   end
 
   def show

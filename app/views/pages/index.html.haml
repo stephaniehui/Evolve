@@ -28,3 +28,4 @@
       %td #{page.updated_at}
       %td= link_to "View #{page.title}", page_path(page.id)
       %td= link_to "Edit #{page.title}", edit_page_path(page.id)
+= paginate @pages

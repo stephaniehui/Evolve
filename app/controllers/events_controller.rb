@@ -3,7 +3,8 @@ class EventsController < ActionController::Base
   layout 'layouts/admin'
 
   def index
-    @events = Event.all
+    params[:page] ||= 0
+    @events = Event.page params[:page]
   end
 
   def show

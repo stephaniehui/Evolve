@@ -3,7 +3,8 @@ class PagesController < ActionController::Base
   layout :resolve_layout
 
   def index
-    @pages = Page.all
+    params[:page] ||= 0
+    @pages = Page.page params[:page]
   end
 
   def new

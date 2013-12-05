@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   layout 'layouts/admin'
 
   def index
-    @users = User.all
+    params[:page] ||= 0
+    @users = User.page params[:page]
   end
 
   def show

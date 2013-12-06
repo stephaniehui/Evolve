@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       flash[:success] = "Successfully created user."
-      redirect_to :index
+      redirect_to :users
     else
       flash[:warning] = "Failed to create user."
       flash[:user_validation_errors] = @user.errors.full_messages
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
     params[:user].delete(:password_confirmation) if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
     if @user.update_attributes(params[:user])
       flash[:success] = "Successfully update user."
-      redirect_to :index
+      redirect_to :users
     else
       flash[:warning] = "Failed to update user."
       flash[:user_validation_errors] = @user.errors.full_messages
@@ -53,7 +53,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.destroy
       flash[:success] = "Successfully deleted user"
-      redirect_to :back
+      redirect_to :users
     end
   end
 end

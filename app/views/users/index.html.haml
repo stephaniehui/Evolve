@@ -1,7 +1,19 @@
+%div.btn-group
+  %div.btn-group
+    %a{:class => 'btn btn-default', :href => new_user_path, :type => 'submit'} New
+
 %h1.page-header Users
-%ul.users
-- @users.each do |user|
-  %li
-    = link_to user.name, user
-    signed up #{user.created_at.to_date}
+%table.table
+  %tr
+    %th Name
+    %th Role(s)
+    %th Email
+    %th Edit
+  - @users.each do |user|
+    %tr
+      %td= link_to user.name, user
+      %td= user.roles_string
+      %td= user.email
+      -if can? :update, user
+        %td= link_to 'Edit', edit_user_path(user.id)
 = paginate @users

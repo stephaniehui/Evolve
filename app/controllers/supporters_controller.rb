@@ -1,5 +1,7 @@
 class SupportersController < ActionController::Base
   before_filter :authenticate_user!, :except => [:create, :new]
+  load_and_authorize_resource
+
   layout :resolve_layout
 
   def index
@@ -8,7 +10,7 @@ class SupportersController < ActionController::Base
   end
 
   def show
-    @supporter = Supporter.find_by_id(params[:id])
+    @supporter = Supporter.find(params[:id])
   end
 
   def create

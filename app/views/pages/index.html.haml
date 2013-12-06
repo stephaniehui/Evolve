@@ -1,13 +1,19 @@
-%div.btn-group
+-if can? :create, Page or can? :create, Petition or can? :create, Event
   %div.btn-group
-    %button{:class => 'btn btn-default dropdown-toggle', :type => 'submit', 'data-toggle' => 'dropdown'}New
-    %ul.dropdown-menu
-      %li
-        %a{:href => new_page_path} Page
-      %li
-        %a{:href => new_page_path(:page_type => :petition)} Petition
-      %li
-        %a{:href => new_page_path(:page_type => :event)} Event
+    %div.btn-group
+      %button{:class => 'btn btn-default dropdown-toggle', :type => 'submit', 'data-toggle' => 'dropdown'}
+        New
+        %span.caret
+      %ul.dropdown-menu
+        -if can? :create, Page
+          %li
+            %a{:href => new_page_path} Page
+        -if can? :create, Petition
+          %li
+            %a{:href => new_page_path(:page_type => :petition)} Petition
+        -if can? :create, Event
+          %li
+            %a{:href => new_page_path(:page_type => :event)} Event
 
 %h1.page-header Pages
 %table#page{:class => "table table-hover"}
@@ -18,14 +24,16 @@
     %th Created At
     %th Updated At
     %th View Page
-    %th Edit Page
+    -if can? :modify, Page
+      %th Edit Page
   - @pages.each do |page|
     %tr{:id => "page-#{page.id}"}
-      %td #{page.type}
-      %td #{page.title}
-      %td #{page.path}
-      %td #{page.created_at}
-      %td #{page.updated_at}
+      %td= page.type
+      %td= page.title
+      %td= page.path
+      %td= page.created_at
+      %td= page.updated_at
       %td= link_to "View #{page.title}", page_path(page.id)
-      %td= link_to "Edit #{page.title}", edit_page_path(page.id)
+      -if can? :modify, page
+        %td= link_to "Edit #{page.title}", edit_page_path(page.id)
 = paginate @pages

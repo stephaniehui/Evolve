@@ -1,5 +1,7 @@
 class PetitionsController < ActionController::Base
   before_filter :authenticate_user!
+  load_and_authorize_resource
+
   layout 'layouts/admin'
 
   def index
@@ -9,7 +11,7 @@ class PetitionsController < ActionController::Base
 
   def show
     params[:page] ||= 0
-    @petition = Petition.find_by_id(params[:id])
+    @petition = Petition.find(params[:id])
     @petition_supporters = @petition.supporters.page(params[:page])
   end
 

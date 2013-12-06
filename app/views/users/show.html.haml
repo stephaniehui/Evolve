@@ -1,3 +1,11 @@
-%h3 User
-%p User: #{@user.name}
-%p Email: #{@user.email if @user.email}
+%h1.page-header= User
+%table.table
+  %tr
+    %th Name
+    %td= @user.name
+  %tr
+    %th Roles
+    %td= @user.roles_string
+  %tr
+    %th Email
+    %td= @user.email

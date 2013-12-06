@@ -1,16 +1,20 @@
-Feature: Administrators should be able to edit existing pages
+Feature: Contributors should be able to edit existing pages
 
-  As an administrator of the website
+  As a contributor to the website
   So I can make changes to existing pages
-  I can edit a page's fields
+  I can update a page's fields
 
-  Background: I am logged in as an administrator
+  Background: I am logged in as a contributor
     Given the following pages exist:
       | title                   | path      | content        | published |
       | Evolve                  | /         | <p>Evolve!</p> | true      |
       | Blog1                   | /blog1    | <p>Blog1</p>   | true      |
       | Blog2                   | /blog2    | <p>Blog2</p>   | true      |
-      And I am a new, authenticated user
+      And the following roles exist:
+        | name        |
+        | Admin       |
+        | Contributor |
+      And I am a new, authenticated "Contributor"
 
   Scenario: I can create a new page and edit the page
     When I am on the page index page
@@ -20,7 +24,6 @@ Feature: Administrators should be able to edit existing pages
       And I press "Update Page"
       And I follow "View Blog1"
       Then I should see "Changed Field"
-
 
   Scenario: (Sad Path) If I try to submit invalid values updating fails with an explanation
     When I am on the page index page

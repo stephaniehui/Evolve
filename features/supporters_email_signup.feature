@@ -1,4 +1,4 @@
-Feature: supporters can sign up for email notifications
+Feature: Supporters can sign up for email notifications
 
   As a resident of California
   So that I can get notified by Evolve
@@ -30,7 +30,7 @@ Feature: supporters can sign up for email notifications
       And I fill in "Email:" with "notavalidemail"
       And I fill in "Mobile Phone:" with "555555555"
       And I check "Send me email updates"
-      And I fill in "Address:" with "16000 Pensylvania Ave"
+      And I fill in "Address:" with "16000 Pennsylvania Ave"
       And I press "Sign up"
       Then I should be on the email sign up page
         And I should see "The following error occurred"

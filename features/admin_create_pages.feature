@@ -8,7 +8,11 @@ Background: I am logged in as an administrator
   Given the following pages exist:
     | title                   | path      | content        | published |
     | Evolve                  | /         | <p>Evolve!</p> | true      |
-    And I am a new, authenticated user
+    And the following roles exist:
+    | name        |
+    | Admin       |
+    | Contributor |
+    And I am a new, authenticated "Admin"
 
   Scenario: If I am logged in I can create a new page and edit the page
     When I am on the page creation page

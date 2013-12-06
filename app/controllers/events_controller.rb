@@ -1,5 +1,7 @@
 class EventsController < ActionController::Base
   before_filter :authenticate_user!
+  load_and_authorize_resource
+
   layout 'layouts/admin'
 
   def index
@@ -9,7 +11,7 @@ class EventsController < ActionController::Base
 
   def show
     params[:page] ||= 0
-    @event = Event.find_by_id(params[:id])
+    @event = Event.find(params[:id])
     @event_supporters = @event.supporters.page(params[:page])
   end
 

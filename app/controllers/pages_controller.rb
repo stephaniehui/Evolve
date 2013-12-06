@@ -1,5 +1,6 @@
 class PagesController < ActionController::Base
   before_filter :authenticate_user!, :except => [:show]
+  load_and_authorize_resource
   layout :resolve_layout
 
   def index
@@ -24,8 +25,8 @@ class PagesController < ActionController::Base
   end
 
   def create
-    page = Page.create(params[:page])
-    if page.valid?
+    page = Page.new(params[:page])
+    if page.save
       flash[:success] = "Successfully created #{page.type_string.downcase} #{page.title}"
       redirect_to :action => :index
     else
@@ -53,18 +54,20 @@ class PagesController < ActionController::Base
   end
 
   def update
-    @page = Page.find(params['id'])
-    @page.update_attributes(params[:page])
-    if @page.valid?
-      flash[:success] = "Successfully updated #{@page.type_string.downcase} '#{@page.title}'"
-      redirect_to :action => :index
-    else
-      flash[:warning] = "Failed to update #{@page.type_string.downcase}."
-      flash[:page_validation_errors] = @page.errors.full_messages
-      redirect_to :action => :edit, :params => params
+    if can? :update, Page
+      @page = Page.find(params['id'])
+      @page.update_attributes(params[:page])
+      if @page.valid?
+        flash[:success] = "Successfully updated #{@page.type_string.downcase} '#{@page.title}'"
+        redirect_to :action => :index
+      else
+        flash[:warning] = "Failed to update #{@page.type_string.downcase}."
+        flash[:page_validation_errors] = @page.errors.full_messages
+        redirect_to :action => :edit, :params => params
+      end
     end
   end
-  
+
   def destroy
     @page = Page.find(params['id'])
     @page.destroy

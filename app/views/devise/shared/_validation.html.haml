@@ -1,0 +1,7 @@
+// lol best practices
+- if resource.errors.size > 0
+  %div{:class => "alert alert-danger"}
+    %p.validation The following error#{'s' unless resource.errors.size == 1} occurred:
+    - resource.errors.full_messages.each do |message|
+      %li #{message}
+

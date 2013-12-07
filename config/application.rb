@@ -20,7 +20,7 @@ module Evolve
     config.autoload_paths << "#{config.root}/lib/validators"
     config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]
 
-    # Don't precompile assets
+    # Required by Heroku
     config.assets.initialize_on_precompile = false
 
     # Only load the plugins named here, in the order given (default is alphabetical).
@@ -62,11 +62,20 @@ module Evolve
     config.assets.enabled = true
 
     # precompile javascript, css, and scss
-    config.assets.precompile = %w( *.js *.css *.scss *.png *.jpg)
+    config.assets.precompile = %w( *.js *.css *.scss *.png *.jpg *.html)
     config.assets.compile = false
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-    
+
+    # Setup layouts for Devise
+    config.to_prepare do
+      Devise::SessionsController.layout 'layouts/admin'
+      Devise::RegistrationsController.layout 'layouts/admin'
+      Devise::ConfirmationsController.layout 'layouts/admin'
+      Devise::UnlocksController.layout 'layouts/admin'
+      Devise::PasswordsController.layout 'layouts/admin'
+    end
   end
 end
+

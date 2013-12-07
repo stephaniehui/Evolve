@@ -1,0 +1,30 @@
+%h1.page-header= @event.name
+%table.table
+  %tr
+    %th Name
+    %td= @event.name
+  %tr
+    %th Path
+    %td= link_to @event.page.path, page_path(@event.page.id)
+  %tr
+    %th Time
+    %td= @event.date
+  %tr
+    %th Location
+    %td= @event.location
+  %tr
+    %th Created at
+    %td= @event.created_at
+  %tr
+    %th Updated at
+    %td= @event.updated_at
+  %tr
+    %th Total Supporters
+    %td= @event.supporters.count
+  %tr
+
+%h4.page-header Supporters
+%ul
+  - @event_supporters.each do |supporter|
+    %li= link_to supporter.display_name, supporter
+= paginate @event_supporters

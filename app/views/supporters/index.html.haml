@@ -1,0 +1,12 @@
+%h1.page-header Supporters
+%table.table
+  %tr
+    %th Name
+    %th Email
+    %th Type
+  - @supporters.each do |supporter|
+    %tr
+      %td= link_to supporter.display_name, supporter
+      %td= supporter.email
+      %td= supporter.supportable_type
+= paginate @supporters

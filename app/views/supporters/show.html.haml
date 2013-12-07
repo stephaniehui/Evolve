@@ -1,0 +1,26 @@
+%h1.page-header= @supporter.display_name
+%table.table
+  %tr
+    %td First Name
+    %td= @supporter.name_first
+  %tr
+    %td Last Name
+    %td= @supporter.name_last
+  %tr
+    %td Email
+    %td= @supporter.email
+  %tr
+    %td Mobile Phone
+    %td= @supporter.phone_mobile
+  %tr
+    %td Address
+    %td= @supporter.address
+  %tr
+    %td Notification by Email
+    %td= @supporter.updates_email ? 'Yes' : 'No'
+  %tr
+    %td Notification by Phone
+    %td= @supporter.updates_mobile ? 'Yes' : 'No'
+  %tr
+    %td Volunteer
+    %td= @supporter.volunteer ? 'Yes' : 'No'

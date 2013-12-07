@@ -1,5 +1,5 @@
 = javascript_include_tag 'ckeditor/ckeditor.js'
-= render 'validation'
 
-%h1.page-header Create Page
+%h1.page-header Create #{@page.type_string}
+= render 'validation'
 = render partial: 'page_form', locals: {page: @page, page_method: 'create'}

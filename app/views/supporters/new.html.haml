@@ -1,0 +1,10 @@
+%div.row
+  %h3.page-header Sign Up
+  %div.col-md-6
+    = render partial: 'validation'
+    = render partial: 'supporter_form', locals: {supporter: @supporter}
+  %div{:class => 'col-md-5 col-md-offset-1'}
+    %br/
+    %h4 About Us
+    Evolve was founded to get beyond the current political mess. From Washington, D.C.'s failure on healthcare reform, to perennial budget problems in Sacramento, to ideological battles at City Hall, all levels of government and public life are suffering from the same problem. Politicians, the media, and many activists are too concerned about winning the next election or on the horserace of politics. As this goes on, real problems go unsolved: 50 million Americans lack access to affordable healthcare, unemployment is still incredibly high, and our public education system is being dismantled.
+    %a{:href => '/about_us'} More.

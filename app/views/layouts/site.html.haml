@@ -11,9 +11,9 @@
   %body
     = render 'pages/header'
     = render 'pages/notification'
-    .width_container
-      #middle
-        = raw @page.content
+    %div.container
+      = yield
     - if @page.is_action?
-      = render 'pages/action'
+      %div.container
+        = render 'pages/action'
     = render 'pages/footer'

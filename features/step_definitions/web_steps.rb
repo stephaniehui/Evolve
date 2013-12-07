@@ -276,6 +276,12 @@ Given /the following pages exist/ do |pages_table|
   #flunk "Unimplemented"
 end
 
+Given /the following roles exist/ do |roles_table|
+  roles_table.hashes.each do |role|
+    Role.create(role)
+  end
+end
+
 # Make sure that one string (regexp) occurs before or after another one
 #   on the same pages
 

@@ -1,0 +1,22 @@
+%div.container
+  = form_for @user, url: {action: user_method},  :html => { :multipart => true, :class => "form-horizontal"} do |user|
+    %div.form-group
+      = user.label :name, 'Name:'
+      = user.text_field :name, :class => 'form-control', :placeholder => 'Name'
+    %div.form-group
+      = user.label :email, 'Email:'
+      = user.text_field :email, :class => 'form-control', :placeholder => 'Email'
+    %div.form-group
+      = user.label :password, 'Password:'
+      = user.password_field :password, :class => 'form-control', :placeholder => 'Password'
+    %div.form-group
+      = user.label :role_ids, 'Roles:'
+      - Role.all.each do |role|
+        %label.checkbox-inline
+          = check_box_tag 'user[role_ids][]', role.id, @user.roles.include?(role)
+          = role.name
+    %div{:class => 'pull-left'}
+      = user.submit :class => 'btn btn-primary', :value => "#{@user.new_record? ? 'Create' : 'Update'} User"
+  %form{:action => users_path}
+    %button{:class => 'btn btn-default pull-left'} Cancel
+  %div.clearfix

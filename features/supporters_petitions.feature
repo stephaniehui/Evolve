@@ -1,14 +1,19 @@
-Feature: petition pages are viewable and signable by supporters
+Feature: Supporters can view and sign petition pages
 
   As a resident of California
   So that I can support certain causes
-  Can sign relevant petitions
+  Can view and sign relevant petitions
 
-  Background: An admin has created a user signable petition
+  Background: A Users has created a petition
     Given the following pages exist:
       | title                   | path      | content           | published |
       | Evolve!                 | /         | <p>Evolve!</p>    | true      |
-    Given I am a new, authenticated user
+      And the following roles exist:
+        | name        |
+        | Admin       |
+        | Contributor |
+      And I am a new, authenticated "Contributor"
+
     When I am on the page index page
       And I follow "Petition"
     When I fill in "Title" with "Petition1"

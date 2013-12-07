@@ -1,14 +1,18 @@
-Feature: Administrators should be create and delete events
+Feature: Contributors should be create and delete events
 
-  As an administrator of the website
+  As a contributor of the website
   So I can notify supporters about events
-  Can create event pages
+  I can create event pages
 
-  Background: I am logged in as an administrator
+  Background: I am logged in as a contributor
     Given the following pages exist:
       | title                   | path      | content        | published |
       | Evolve                  | /         | <p>Evolve!</p> | true      |
-    And I am a new, authenticated user
+    And the following roles exist:
+      | name        |
+      | Admin       |
+      | Contributor |
+    And I am a new, authenticated "Contributor"
 
   Scenario: If I am logged in I can create a new event
     When I am on the page index page

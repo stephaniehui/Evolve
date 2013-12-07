@@ -1,22 +1,24 @@
 %h1.page-header= @petition.name
-%table
+%table.table
   %tr
-    %td Name
+    %th Name
     %td= @petition.name
   %tr
-    %td Path
+    %th Path
     %td= link_to @petition.page.path, page_path(@petition.page.id)
   %tr
-    %td Created at
+    %th Created at
     %td= @petition.page.created_at
   %tr
-    %td Updated at
+    %th Updated at
     %td= @petition.page.updated_at
   %tr
-    %td Total Supporters
+    %th Total Supporters
     %td= @petition.supporters.count
   %tr
 
 %h4.page-header Supporters
-- @petition.supporters.each do |supporter|
-  %li #{supporter.email}
+%ul
+  - @petition_supporters.each do |supporter|
+    %li= link_to supporter.display_name, supporter
+= paginate @petition_supporters

@@ -1,9 +1,5 @@
 require('factory_girl')
 
-When /I log in as administrator/ do
-  redirect_to(admin_page_path)
-end
-
 When /I (un)?check the following pages: (.*)/ do |uncheck, pages_list|
   pages_list.split(/,/).each do |r|
     if uncheck
@@ -24,10 +20,6 @@ Then /(.*) should have attribute (.*)/ do |pagename, attribute|
   end
 end
 
-Given /^I am not authenticated$/ do
-  visit('/users/sign_out') # ensure that at least
-end
-
 
 Given /^I am an authenticated user$/ do
   user = FactoryGirl.create_or_return_admin_user
@@ -40,11 +32,12 @@ Given /^I am an authenticated user$/ do
 end
 
 
-Given /^I am a new, authenticated user$/ do
+Given /^I am a new, authenticated "(.*?)"$/ do |role|
   user = FactoryGirl.create(:user, :rand_name, :seq_email, :seq_password)
+  user.add_role(role)
   user.should be_valid
 
-  visit '/users/sign_in'
+  visit new_user_session_path
   fill_in "user_email", :with => user.email
   fill_in "user_password", :with => user.password
   click_button "Sign in"

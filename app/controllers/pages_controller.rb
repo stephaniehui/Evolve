@@ -1,9 +1,11 @@
 class PagesController < ActionController::Base
   before_filter :authenticate_user!, :except => [:show]
+  load_and_authorize_resource
   layout :resolve_layout
 
   def index
-    @pages = Page.all
+    params[:page] ||= 0
+    @pages = Page.page params[:page]
   end
 
   def new
@@ -23,12 +25,12 @@ class PagesController < ActionController::Base
   end
 
   def create
-    page = Page.create(params[:page])
-    if page.valid?
-      flash[:notice] = "Successfully created page #{page.title}"
+    page = Page.new(params[:page])
+    if page.save
+      flash[:success] = "Successfully created #{page.type_string.downcase} #{page.title}"
       redirect_to :action => :index
     else
-      flash[:warning] = "Failed to create page."
+      flash[:warning] = "Failed to create #{page.type_string.downcase} #{page.title}"
       flash[:page_validation_errors] = page.errors.full_messages
       redirect_to :action => :new, :params => params
     end
@@ -45,29 +47,31 @@ class PagesController < ActionController::Base
     end
 
     if @page.published?
-      render 'layouts/site'
+      render 'pages/_content'
     else
       redirect_to :error_404_path
     end
   end
 
   def update
-    @page = Page.find(params['id'])
-    @page.update_attributes(params[:page])
-    if @page.valid?
-      flash[:notice] = "Successfully updated page '#{@page.title}'"
-      redirect_to :action => :index
-    else
-      flash[:warning] = "Failed to update page."
-      flash[:page_validation_errors] = @page.errors.full_messages
-      redirect_to :action => :edit, :params => params
+    if can? :update, Page
+      @page = Page.find(params['id'])
+      @page.update_attributes(params[:page])
+      if @page.valid?
+        flash[:success] = "Successfully updated #{@page.type_string.downcase} '#{@page.title}'"
+        redirect_to :action => :index
+      else
+        flash[:warning] = "Failed to update #{@page.type_string.downcase}."
+        flash[:page_validation_errors] = @page.errors.full_messages
+        redirect_to :action => :edit, :params => params
+      end
     end
   end
-  
+
   def destroy
     @page = Page.find(params['id'])
     @page.destroy
-    flash[:notice] = "Page '#{@page.title}' was deleted."
+    flash[:success] = "#{@page.type_string} '#{@page.title}' was deleted."
     redirect_to :action => :index
   end
 

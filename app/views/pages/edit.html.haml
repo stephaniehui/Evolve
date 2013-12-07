@@ -1,3 +1,10 @@
-%h1.page-header Edit Page
+%h1.page-header Edit #{@page.type_string}
 = render 'validation'
-= render partial: 'page_form', :class => "center", locals: {page: @page, page_method: 'update'}
+= render partial: 'page_form', locals: {page: @page, page_method: 'update'}
+
+%h3.page-header Delete #{@page.type_string}
+- if ! @page.new_record?
+  = button_to "Delete #{@page.type_string}", @page, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger'
+%br/
+%br/
+%br/

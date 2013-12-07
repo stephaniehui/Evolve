@@ -1,0 +1,10 @@
+%h1.page-header Edit User
+= render 'validation'
+= render partial: 'user_form', locals: {user: @user, user_method: 'update'}
+
+%h3.page-header Delete User
+- unless @user.new_record?
+  = button_to "Delete User", @user, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger'
+%br/
+%br/
+%br/

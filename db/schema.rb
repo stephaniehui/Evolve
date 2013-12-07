@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131120220639) do
+ActiveRecord::Schema.define(:version => 20131205143600) do
 
   create_table "ckeditor_assets", :force => true do |t|
     t.string   "data_file_name",                  :null => false
@@ -43,11 +43,15 @@ ActiveRecord::Schema.define(:version => 20131120220639) do
     t.string   "title"
     t.boolean  "published"
     t.text     "content"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.string   "content_type"
     t.string   "url"
     t.string   "description"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
   end
 
   create_table "petitions", :force => true do |t|
@@ -57,12 +61,30 @@ ActiveRecord::Schema.define(:version => 20131120220639) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "roles_users", :id => false, :force => true do |t|
+    t.integer "role_id"
+    t.integer "user_id"
+  end
+
   create_table "supporters", :force => true do |t|
     t.string   "email"
     t.integer  "supportable_id"
     t.string   "supportable_type"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.string   "name_first"
+    t.string   "name_last"
+    t.integer  "phone_mobile"
+    t.string   "address"
+    t.boolean  "updates_email"
+    t.boolean  "updates_mobile"
+    t.boolean  "volunteer"
   end
 
   create_table "users", :force => true do |t|

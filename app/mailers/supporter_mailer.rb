@@ -1,22 +1,9 @@
 class SupporterMailer < ActionMailer::Base
   default from: "admin@evolve.com"
   
-  def welcome_email(supporter)
+  def subscribe(supporter, list_id)
     @supporter = supporter
-    @url  = 'http://evolve.com/'
-    mail(to: @supporter.email, 
-		subject: 'Welcome to Evolve!')
+	gb = Gibbon::API.new
+	gb.lists.subscribe({:id => 'list_id', :email => {:email => @supporter.email}, :merge_vars => {:FNAME => @supporter.name_first, :LNAME => @supporter.name_last}, :double_optin => false, :send_welcome => true})
   end
-  
-  def petition_email(supporter)
-    @supporter = supporter
-    @url  = 'http://evolve.com/'
-    mail(to: @supporter.email, 
-		subject: 'Thank you for signing the petition!')
-  end
-  
-  def mass_email(supporters, headline)
-  supporters.each do |supporter|
-	mail(to: supporter.email, 
-		subject: headline)
 end

@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(:version => 20131205143600) do
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
   create_table "ckeditor_assets", :force => true do |t|
+<<<<<<< HEAD
+<<<<<<< HEAD
     t.string   "data_file_name",                  :null => false
     t.string   "data_content_type"
     t.integer  "data_file_size"
@@ -57,6 +59,26 @@ ActiveRecord::Schema.define(:version => 20131205143600) do
     t.integer  "height"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
+=======
+=======
+>>>>>>> 9c8819c... Completion of gibbon gem
+    t.string   "data_file_name",                   :null => false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",     :limit => 30
+    t.string   "type",               :limit => 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+<<<<<<< HEAD
+>>>>>>> a07596c... Setup mailer using gibbon
+=======
+>>>>>>> 9c8819c... Completion of gibbon gem
   end
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
@@ -75,12 +97,34 @@ ActiveRecord::Schema.define(:version => 20131205143600) do
     t.string   "path"
     t.string   "title"
     t.boolean  "published"
+<<<<<<< HEAD
+<<<<<<< HEAD
     t.text     "content"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.string   "content_type"
     t.string   "url"
     t.string   "description"
+=======
+=======
+>>>>>>> 9c8819c... Completion of gibbon gem
+    t.string   "content"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "content_type"
+    t.string   "url"
+    t.string   "description"
+    t.string   "data_file_name"
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.datetime "data_updated_at"
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+<<<<<<< HEAD
+>>>>>>> a07596c... Setup mailer using gibbon
+=======
+>>>>>>> 9c8819c... Completion of gibbon gem
     t.string   "file_file_name"
     t.string   "file_content_type"
     t.integer  "file_file_size"
@@ -107,10 +151,22 @@ ActiveRecord::Schema.define(:version => 20131205143600) do
 
   create_table "supporters", :force => true do |t|
     t.string   "email"
+<<<<<<< HEAD
+<<<<<<< HEAD
     t.integer  "supportable_id"
     t.string   "supportable_type"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+=======
+    t.integer  "petition_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+>>>>>>> a07596c... Setup mailer using gibbon
+=======
+    t.integer  "petition_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+>>>>>>> 9c8819c... Completion of gibbon gem
     t.string   "name_first"
     t.string   "name_last"
     t.integer  "phone_mobile"

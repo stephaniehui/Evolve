@@ -61,7 +61,10 @@ config.paperclip_defaults = {
     user_name: ENV["evolvetest90"],
     password: ENV["GOO2f!GLEDF*V"]
   }
+<<<<<<< HEAD
   # Fixes SSL Connection Error in Windows execution of Ruby
   # Based on fix described at: https://gist.github.com/fnichol/867550
   ENV['SSL_CERT_FILE'] = File.expand_path(File.dirname(__FILE__)) + "/config/cacert.pem"
+=======
+>>>>>>> a07596c... Setup mailer using gibbon
 end

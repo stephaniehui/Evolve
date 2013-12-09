@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     else
       flash[:warning] = "Failed to create user."
       flash[:user_validation_errors] = @user.errors.full_messages
-      redirect_to :new, :params => params
+      redirect_to :action => :new, :params => params
     end
   end
 

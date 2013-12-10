@@ -4,6 +4,7 @@ class Supporter < ActiveRecord::Base
                   :name_first, :name_last, :phone_mobile, :address,
                   :updates_email, :updates_mobile, :volunteer
   validates_with EmailValidator, :attr => :email
+  after_save :subscribe
 
   def supportable_type=(s_type)
     super(s_type.to_s.classify.constantize.base_class.to_s)
@@ -42,5 +43,16 @@ class Supporter < ActiveRecord::Base
       self.email
     end
   end
-
+  
+  def subscribe
+    gb = Gibbon::API.new
+	if self.supportable_type.to_s == 'Supporter'
+	  gb.lists.subscribe({
+	  :id => ENV['EMAILING_LIST_ID'], 
+	  :email => {:email => self.email}, 
+	  :merge_vars => {:FNAME => self.name_first, :LNAME => self.name_last}, 
+	  :double_optin => false, 
+	  :send_welcome => true})
+	end
+  end
 end

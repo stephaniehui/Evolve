@@ -18,7 +18,6 @@ class SupportersController < ActionController::Base
     if supporter.valid?
       flash[:success] = supporter.create_success_text
       if supporter.supportable_type.to_s == 'Supporter'
-		SupporterMailer.subscribe(supporter, ENV[EMAILING_LIST_ID])
         redirect_to '/'
       else
         redirect_to :back

@@ -7,12 +7,9 @@ gem 'ckeditor'
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'gibbon'
-<<<<<<< HEAD
 gem 'aws-s3'
 gem 'kaminari'
 gem 'cancan'
-=======
->>>>>>> 1cfdc7c... Mailchimp setup
 
 # for Heroku deployment - as described in Ap. A of ELLS book
 group :development, :test do

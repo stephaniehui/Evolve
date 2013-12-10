@@ -8,7 +8,8 @@
 Role.create(:name => 'Admin')
 Role.create(:name => 'Contributor')
 if Rails.env.development? or Rails.env.production?
-  User.find_or_create_by_email :name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup
+  user = User.find_or_create_by_email :name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup
+  user.roles << Role.find_by_name('Admin')
 end
 if Rails.env.development?
   Page.find_or_create_by_path :path => '/', :title => 'Evolve!', :published => true, :content => '', :content_type => 'article', :description => "Evolve!"
